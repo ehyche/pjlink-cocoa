@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD379BC3172A1C1700D56A3F /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = FD379BC0172A1C1700D56A3F /* AsyncSocket.m */; };
+		FD379BC4172A1C1700D56A3F /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = FD379BC2172A1C1700D56A3F /* AsyncUdpSocket.m */; };
+		FD379BC9172A1D8500D56A3F /* PJURLProtocolRunLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = FD379BC8172A1D8500D56A3F /* PJURLProtocolRunLoop.m */; };
 		FD4EE3B2171C683F0033FD58 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD4EE3B1171C683F0033FD58 /* UIKit.framework */; };
 		FD4EE3B4171C683F0033FD58 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD4EE3B3171C683F0033FD58 /* Foundation.framework */; };
 		FD4EE3B6171C683F0033FD58 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD4EE3B5171C683F0033FD58 /* CoreGraphics.framework */; };
@@ -34,6 +37,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FD379BBF172A1C1700D56A3F /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
+		FD379BC0172A1C1700D56A3F /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
+		FD379BC1172A1C1700D56A3F /* AsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncUdpSocket.h; sourceTree = "<group>"; };
+		FD379BC2172A1C1700D56A3F /* AsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncUdpSocket.m; sourceTree = "<group>"; };
+		FD379BC7172A1D8500D56A3F /* PJURLProtocolRunLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJURLProtocolRunLoop.h; sourceTree = "<group>"; };
+		FD379BC8172A1D8500D56A3F /* PJURLProtocolRunLoop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJURLProtocolRunLoop.m; sourceTree = "<group>"; };
 		FD4EE3AE171C683F0033FD58 /* PJLinkCocoa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PJLinkCocoa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD4EE3B1171C683F0033FD58 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FD4EE3B3171C683F0033FD58 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -92,6 +101,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FD379BC5172A1C2B00D56A3F /* RunLoop */ = {
+			isa = PBXGroup;
+			children = (
+				FD379BBF172A1C1700D56A3F /* AsyncSocket.h */,
+				FD379BC0172A1C1700D56A3F /* AsyncSocket.m */,
+				FD379BC1172A1C1700D56A3F /* AsyncUdpSocket.h */,
+				FD379BC2172A1C1700D56A3F /* AsyncUdpSocket.m */,
+			);
+			name = RunLoop;
+			sourceTree = "<group>";
+		};
+		FD379BC6172A1C3100D56A3F /* GCD */ = {
+			isa = PBXGroup;
+			children = (
+				FD9A0DD71728C1F500C82534 /* GCDAsyncSocket.h */,
+				FD9A0DD81728C1F500C82534 /* GCDAsyncSocket.m */,
+				FD9A0DD91728C1F500C82534 /* GCDAsyncUdpSocket.h */,
+				FD9A0DDA1728C1F500C82534 /* GCDAsyncUdpSocket.m */,
+			);
+			name = GCD;
+			sourceTree = "<group>";
+		};
 		FD4EE3A5171C683F0033FD58 = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +195,8 @@
 				FD9A0DC21728BF3600C82534 /* PJURLProtocol.m */,
 				FD9A0DC31728BF3600C82534 /* PJURLResponse.h */,
 				FD9A0DC41728BF3600C82534 /* PJURLResponse.m */,
+				FD379BC7172A1D8500D56A3F /* PJURLProtocolRunLoop.h */,
+				FD379BC8172A1D8500D56A3F /* PJURLProtocolRunLoop.m */,
 			);
 			name = Protocol;
 			sourceTree = "<group>";
@@ -186,10 +219,8 @@
 		FD9A0DD61728C1CB00C82534 /* CocoaAsyncSocket */ = {
 			isa = PBXGroup;
 			children = (
-				FD9A0DD71728C1F500C82534 /* GCDAsyncSocket.h */,
-				FD9A0DD81728C1F500C82534 /* GCDAsyncSocket.m */,
-				FD9A0DD91728C1F500C82534 /* GCDAsyncUdpSocket.h */,
-				FD9A0DDA1728C1F500C82534 /* GCDAsyncUdpSocket.m */,
+				FD379BC6172A1C3100D56A3F /* GCD */,
+				FD379BC5172A1C2B00D56A3F /* RunLoop */,
 			);
 			name = CocoaAsyncSocket;
 			sourceTree = "<group>";
@@ -275,6 +306,9 @@
 				FD9A0DD51728BFA300C82534 /* NSURLRequest+PJLink.m in Sources */,
 				FD9A0DDB1728C1F500C82534 /* GCDAsyncSocket.m in Sources */,
 				FD9A0DDC1728C1F500C82534 /* GCDAsyncUdpSocket.m in Sources */,
+				FD379BC3172A1C1700D56A3F /* AsyncSocket.m in Sources */,
+				FD379BC4172A1C1700D56A3F /* AsyncUdpSocket.m in Sources */,
+				FD379BC9172A1D8500D56A3F /* PJURLProtocolRunLoop.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

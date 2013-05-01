@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AsyncSocket.h"
 
 NSString* const kPJLinkScheme;
 NSString* const kPJLinkPOWR;
@@ -22,6 +21,18 @@ NSString* const kPJLinkINF2;
 NSString* const kPJLinkINFO;
 NSString* const kPJLinkCLSS;
 
-@interface PJURLProtocolRunLoop : NSURLProtocol<AsyncSocketDelegate>
+NSString* const PJLinkErrorDomain;
+
+enum {
+    PJLinkErrorUnknown                  = -1,
+    PJLinkErrorNoValidCommandsInRequest = -100,
+    PJLinkErrorInvalidAuthSeed          = -101,
+    PJLinkErrorNoDataInAuthChallenge    = -102,
+    PJLinkErrorNoPasswordProvided       = -103,
+    PJLinkErrorNoDataInResponse         = -104,
+    PJLinkErrorMissingResponseHeader    = -105
+};
+
+@interface PJURLProtocolRunLoop : NSURLProtocol
 
 @end

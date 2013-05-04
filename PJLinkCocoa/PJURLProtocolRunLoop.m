@@ -165,10 +165,10 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
         NSString* host = [url host];
         // Get the port
         NSNumber* portNum = [url port];
-        // Create the socket
-        _socket = [[AsyncSocket alloc] initWithDelegate:self];
         // Get the port number
         uint16_t port16 = [portNum unsignedShortValue];
+        // Create the socket
+        _socket = [[AsyncSocket alloc] initWithDelegate:self];
         // Connect to the host
         NSLog(@"PJURLProtocolRunLoop[%p] calling socket connectToHost:%@ onPort:%u withTimeout:%.1f error:",
               self, host, port16, _timeout);

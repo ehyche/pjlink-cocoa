@@ -568,6 +568,8 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
         if ([responseStr isEqualToString:kPJLinkAuthError]) {
             // Set the flag saying we handled this response
             ret = YES;
+            // Increment the password failure count
+            _failureCount++;
             // The password we sent did not match, so we need to re-send the auth challenge
             [self callClientDidReceiveAuthenticationChallenge];
         } else {

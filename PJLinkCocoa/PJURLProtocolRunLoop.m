@@ -213,6 +213,8 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
 - (void)onSocket:(AsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port {
     NSLog(@"PJURLProtocolRunLoop[%p]: onSocket:%@ didConnectToHost:%@ port:%u", self, sock, host, port);
     // Read the initial challenge from the projector
+    NSLog(@"PJURLProtocolRunLoop[%p] calling readDataToData:withTimeout:%.1f tag:%d",
+          self, _timeout, kPJLinkTagReadProjectorChallenge);
     [_socket readDataToData:[AsyncSocket CRData]
                 withTimeout:_timeout
                         tag:kPJLinkTagReadProjectorChallenge];
@@ -250,6 +252,8 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
     NSLog(@"PJURLProtocolRunLoop[%p]: onSocket:%@ didWriteDataWithTag:%ld", self, sock, tag);
     if (tag == kPJLinkTagWriteRequest) {
         // Read data up to and including the carriage return
+        NSLog(@"PJURLProtocolRunLoop[%p] calling readDataToData:withTimeout:%.1f tag:%d",
+              self, _timeout, kPJLinkTagReadCommandResponse);
         [_socket readDataToData:[AsyncSocket CRData]
                     withTimeout:_timeout
                             tag:kPJLinkTagReadCommandResponse];
@@ -486,7 +490,7 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
         //
         // where:
         // x is either 0 (no authentication) or 1 (authentication)
-        // yyyyyyyy is a 8-character hex string
+        // yyyyyyyy is a 8-character hex string (only present if x == 1)
         //
         // Get the length of the string
         NSUInteger challengeLength = [challenge length];
@@ -608,7 +612,8 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
         // Encode as UTF8
         NSData* nextRequestData = [nextRequest dataUsingEncoding:NSUTF8StringEncoding];
         // Write the request to the socket
-        NSLog(@"PJURLProtocolRunLoop[%p] writing to socket \"%@\"", self, nextRequest);
+        NSLog(@"PJURLProtocolRunLoop[%p] calling writeData:withTimeout:%.1f tag:%d dataStr=\"%@\"",
+              self, _timeout, kPJLinkTagWriteRequest, nextRequest);
         [_socket writeData:nextRequestData
                withTimeout:_timeout
                        tag:kPJLinkTagWriteRequest];

@@ -51,6 +51,7 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
     NSInteger       _failureCount;
     NSString*       _hashedPassword;
     NSUInteger      _bytesSent;
+    BOOL            _stopLoadingCalled;
 }
 
 + (NSArray*)validPJLinkCommandsFromRequest:(NSURLRequest*)request;
@@ -154,6 +155,8 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
     _requests = [PJURLProtocolRunLoop pjlinkRequestsFromRequest:[self request]];
     // Make sure we actually have some requests - otherwise fail.
     if ([_requests count] > 0) {
+        // Clear the flag that says that stop loading was called
+        _stopLoadingCalled = NO;
         // Get the request
         NSURLRequest* request = [self request];
         // Get the URL from the request
@@ -195,6 +198,21 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
     // We do not call back to the client after this, as the
     // documentation says that after we receive a stopLoading,
     // we should make no further calls to the NSURLProtocolClient.
+    // Setting this flag prevents us from calling the NSURLProtocolClient.
+    _stopLoadingCalled = YES;
+}
+
+#pragma mark -
+#pragma mark NSURLProtocol overridden methods
+
+- (id<NSURLProtocolClient>)client{
+    id<NSURLProtocolClient> ret = [super client];
+
+    if (_stopLoadingCalled) {
+        ret = nil;
+    }
+
+    return ret;
 }
 
 #pragma mark -

@@ -14,16 +14,17 @@
 @interface PJResponseInfo : NSObject
 
 @property(nonatomic,assign) PJCommand command;
-@property(nonatomic,assign) BOOL      isSetCommand;
 @property(nonatomic,assign) PJError   error;
 
 -(BOOL)            parseResponseData:(NSString*) dataStr;
-+(PJResponseInfo*) infoForResponseData:(NSData*) data fromRequest:(PJRequestInfo*) request;
-+(PJResponseInfo*) infoForCommand:(PJCommand) command isSet:(BOOL) isSet;
++(PJResponseInfo*) infoForResponseStringWithoutHeaderClassTerminator:(NSString*) responseStr;
++(PJResponseInfo*) infoForResponseString:(NSString*) responseStr;
++(PJResponseInfo*) infoForCommand:(PJCommand) command responseValue:(NSString*) responseStr;
++(NSString*)       pjlink4ccForCommand:(PJCommand) command;
++(PJCommand)       pjlinkCommandFor4cc:(NSString*) fourCC;
 
 +(BOOL) scanInteger:(NSInteger*) pScanInt fromRange:(NSRange) range inString:(NSString*) str;
 +(BOOL) scanInteger:(NSInteger*) pScanInt fromString:(NSString*) str;
-
 
 @end
 

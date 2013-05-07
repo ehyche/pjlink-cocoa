@@ -20,8 +20,14 @@ NSString* const kPJLinkINF1;
 NSString* const kPJLinkINF2;
 NSString* const kPJLinkINFO;
 NSString* const kPJLinkCLSS;
-
+NSString* const kPJLinkOK;
+NSString* const kPJLinkERR1;
+NSString* const kPJLinkERR2;
+NSString* const kPJLinkERR3;
+NSString* const kPJLinkERR4;
+NSString* const kPJLinkHeaderClass;
 NSString* const PJLinkErrorDomain;
+NSString* const kPJLinkCR;
 
 enum {
     PJLinkErrorUnknown                  = -1,

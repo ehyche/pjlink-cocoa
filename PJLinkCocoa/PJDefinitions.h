@@ -6,14 +6,6 @@
 //  Copyright (c) 2012 Eric Hyche. All rights reserved.
 //
 
-#define k_commandsRequestProperty    @"PJCommands"
-#define k_PJCommandTerminator        @"\n"
-#define k_PJErrorDomain              @"PJLinkErrorDomain"
-#define k_PJErrorOK                  0
-#define k_PJErrorCouldNotConnect    -1
-#define k_PJErrorUnexpectedResponse -2
-#define k_PJErrorNoPasswordProvided -3
-
 typedef enum _PJCommand
 {
     PJCommandPower,

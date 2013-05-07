@@ -10,30 +10,34 @@
 #import "AsyncSocket.h"
 #import <CommonCrypto/CommonDigest.h>
 
-NSString* const kPJLinkScheme = @"pjlink";
-NSString* const kPJLinkPOWR   = @"POWR";
-NSString* const kPJLinkINPT   = @"INPT";
-NSString* const kPJLinkAVMT   = @"AVMT";
-NSString* const kPJLinkERST   = @"ERST";
-NSString* const kPJLinkLAMP   = @"LAMP";
-NSString* const kPJLinkINST   = @"INST";
-NSString* const kPJLinkNAME   = @"NAME";
-NSString* const kPJLinkINF1   = @"INF1";
-NSString* const kPJLinkINF2   = @"INF2";
-NSString* const kPJLinkINFO   = @"INFO";
-NSString* const kPJLinkCLSS   = @"CLSS";
-
-NSString* const PJLinkErrorDomain = @"PJLinkErrorDomain";
+NSString* const kPJLinkScheme      = @"pjlink";
+NSString* const kPJLinkPOWR        = @"POWR";
+NSString* const kPJLinkINPT        = @"INPT";
+NSString* const kPJLinkAVMT        = @"AVMT";
+NSString* const kPJLinkERST        = @"ERST";
+NSString* const kPJLinkLAMP        = @"LAMP";
+NSString* const kPJLinkINST        = @"INST";
+NSString* const kPJLinkNAME        = @"NAME";
+NSString* const kPJLinkINF1        = @"INF1";
+NSString* const kPJLinkINF2        = @"INF2";
+NSString* const kPJLinkINFO        = @"INFO";
+NSString* const kPJLinkCLSS        = @"CLSS";
+NSString* const kPJLinkOK          = @"OK";
+NSString* const kPJLinkERR1        = @"ERR1";
+NSString* const kPJLinkERR2        = @"ERR2";
+NSString* const kPJLinkERR3        = @"ERR3";
+NSString* const kPJLinkERR4        = @"ERR4";
+NSString* const kPJLinkHeaderClass = @"%1";
+NSString* const kPJLinkCR          = @"\r";
+NSString* const PJLinkErrorDomain  = @"PJLinkErrorDomain";
 
 NSString* const kPJLinkQuerySuffix     = @" ?";
 NSString* const kPJLinkPowerOnSuffix   = @" 1";
 NSString* const kPJLinkPowerOffSuffix  = @" 0";
 NSString* const kPJLinkSpace           = @" ";
-NSString* const kPJLinkCR              = @"\r";
 NSString* const kPJLinkAuthChallenge   = @"PJLINK 1";
 NSString* const kPJLinkNoAuthChallenge = @"PJLINK 0";
 NSString* const kPJLinkAuthError       = @"PJLINK ERRA\r";
-NSString* const kPJLinkHeaderClass     = @"%1";
 
 const NSInteger kPJLinkTagWriteRequest           = 10;
 const NSInteger kPJLinkTagReadProjectorChallenge = 20;

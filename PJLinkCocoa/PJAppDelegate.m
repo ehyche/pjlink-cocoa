@@ -7,11 +7,14 @@
 //
 
 #import "PJAppDelegate.h"
+#import "PJURLProtocolRunLoop.h"
 
 @implementation PJAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Register the PJLink protocol
+    [NSURLProtocol registerClass:[PJURLProtocolRunLoop class]];
     // Override point for customization after application launch.
     return YES;
 }

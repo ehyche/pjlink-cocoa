@@ -290,6 +290,14 @@ static NSDictionary* gFourCharacterCodeToCommandEnum = nil;
 @synthesize inputType;
 @synthesize inputNumber;
 
+- (id)copyWithZone:(NSZone*)zone {
+    PJInput* inputCopy = [[PJInput alloc] init];
+    inputCopy.inputType   = self.inputType;
+    inputCopy.inputNumber = self.inputNumber;
+
+    return inputCopy;
+}
+
 -(BOOL) parseResponseData:(NSString*) dataStr {
     BOOL bRet = NO;
 

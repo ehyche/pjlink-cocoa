@@ -21,7 +21,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    // Initialize the command text field.
+    self.requestTextView.text = @"POWR ?\nINPT ?\nAVMT ?\nERST ?\nLAMP ?\nINST ?\nNAME ?\nINF1 ?\nINF2 ?\nINFO ?\nCLSS ?\n";
 }
 
 - (void)didReceiveMemoryWarning

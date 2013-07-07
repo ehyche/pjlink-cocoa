@@ -1,6 +1,0 @@
-[submodule "ThirdParty/CocoaAsyncSocket"]
-	path = ThirdParty/CocoaAsyncSocket
-	url = git@github.com:robbiehanson/CocoaAsyncSocket.git
-[submodule "ThirdParty/AFNetworking"]
-	path = ThirdParty/AFNetworking
-	url = git@github.com:AFNetworking/AFNetworking.git

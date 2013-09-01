@@ -8,11 +8,18 @@
 
 #import "AFURLConnectionOperation.h"
 
+@class AFPJLinkRequestOperation;
+
+// Typedef's for the success and failure blocks
+typedef void (^AFPJLinkSuccessBlock)(AFPJLinkRequestOperation* operation, NSString* responseBody, NSArray* parsedResponses);
+typedef void (^AFPJLinkFailureBlock)(AFPJLinkRequestOperation* operation, NSError* error);
+
+
 @interface AFPJLinkRequestOperation : AFURLConnectionOperation
 
 @property(nonatomic,readonly,copy) NSArray* responses; // Array of PJResponseInfo objects
 
-- (void)setCompletionBlockWithSuccess:(void (^)(AFPJLinkRequestOperation* operation, NSString* responseBody, NSArray* parsedResponses))success
-                              failure:(void (^)(AFPJLinkRequestOperation* operation, NSError* error))failure;
+- (void)setCompletionBlockWithSuccess:(AFPJLinkSuccessBlock)successBlock
+                              failure:(AFPJLinkFailureBlock)failureBlock;
 
 @end

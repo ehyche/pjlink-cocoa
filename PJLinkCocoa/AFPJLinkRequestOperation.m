@@ -50,23 +50,22 @@
     return _responses;
 }
 
-- (void)setCompletionBlockWithSuccess:(void (^)(AFPJLinkRequestOperation* operation, NSString* responseBody, NSArray* parsedResponses))success
-                              failure:(void (^)(AFPJLinkRequestOperation* operation, NSError* error))failure
-{
+- (void)setCompletionBlockWithSuccess:(AFPJLinkSuccessBlock)successBlock
+                              failure:(AFPJLinkFailureBlock)failureBlock {
     // completionBlock is manually nilled out in AFURLConnectionOperation to break the retain cycle.
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-retain-cycles"
     self.completionBlock = ^{
         if (self.error) {
-            if (failure) {
+            if (failureBlock) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    failure(self, self.error);
+                    failureBlock(self, self.error);
                 });
             }
         } else {
-            if (success) {
+            if (successBlock) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    success(self, self.responseString, self.responses);
+                    successBlock(self, self.responseString, self.responses);
                 });
             }
         }

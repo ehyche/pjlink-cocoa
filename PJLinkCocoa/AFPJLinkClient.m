@@ -9,6 +9,8 @@
 #import "AFPJLinkClient.h"
 #import "AFPJLinkRequestOperation.h"
 
+NSTimeInterval const kAFPJLinkClientDefaultTimeout = 30.0;
+
 @interface AFPJLinkClient()
 
 @property(readwrite,nonatomic,strong) NSURLCredential* defaultCredential;
@@ -36,15 +38,27 @@
     return self;
 }
 
-- (void)makeRequestWithBody:(NSString*) requestBody
-                    success:(void (^)(AFPJLinkRequestOperation* operation, NSString* responseBody, NSArray* parsedResponses)) success
-                    failure:(void (^)(AFPJLinkRequestOperation* operation, NSError* error)) failure {
+- (void)makeRequestWithBody:(NSString*)requestBody
+                    success:(AFPJLinkSuccessBlock)successBlock
+                    failure:(AFPJLinkFailureBlock)failureBlock {
+    [self makeRequestWithBody:requestBody
+                      timeout:kAFPJLinkClientDefaultTimeout
+                      success:successBlock
+                      failure:failureBlock];
+}
+
+- (void)makeRequestWithBody:(NSString*)requestBody
+                    timeout:(NSTimeInterval)requestTimeout
+                    success:(AFPJLinkSuccessBlock)successBlock
+                    failure:(AFPJLinkFailureBlock)failureBlock {
     // Create the request
     NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:self.baseURL];
     [request setHTTPBody:[requestBody dataUsingEncoding:NSUTF8StringEncoding]];
+    // Set the timeout
+    request.timeoutInterval = requestTimeout;
     // Create an AFPJLinkRequestOperation
     AFPJLinkRequestOperation* operation = [[AFPJLinkRequestOperation alloc] initWithRequest:request];
-    [operation setCompletionBlockWithSuccess:success failure:failure];
+    [operation setCompletionBlockWithSuccess:successBlock failure:failureBlock];
     operation.credential = self.defaultCredential;
     // Enqueue the operation
     [self.operationQueue addOperation:operation];

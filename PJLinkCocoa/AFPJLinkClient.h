@@ -8,17 +8,24 @@
 
 #import <Foundation/Foundation.h>
 #import "AFHTTPClient.h"
+#import "AFPJLinkRequestOperation.h"
 
 @class AFPJLinkRequestOperation;
+
 
 @interface AFPJLinkClient : AFHTTPClient
 
 @property(nonatomic,readonly) NSString* host;
 @property(nonatomic,readonly) NSInteger port;
 
-- (void)makeRequestWithBody:(NSString*) requestBody
-                    success:(void (^)(AFPJLinkRequestOperation* operation, NSString* responseBody, NSArray* parsedResponses)) success
-                    failure:(void (^)(AFPJLinkRequestOperation* operation, NSError* error)) failure;
+- (void)makeRequestWithBody:(NSString*)requestBody
+                    success:(AFPJLinkSuccessBlock)successBlock
+                    failure:(AFPJLinkFailureBlock)failureBlock;
+
+- (void)makeRequestWithBody:(NSString*)requestBody
+                    timeout:(NSTimeInterval)requestTimeout
+                    success:(AFPJLinkSuccessBlock)successBlock
+                    failure:(AFPJLinkFailureBlock)failureBlock;
 
 @end
 

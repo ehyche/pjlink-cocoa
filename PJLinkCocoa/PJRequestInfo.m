@@ -23,7 +23,6 @@ static NSDictionary* gFourCharacterCodeToCommandEnum = nil;
     {
         gCommandEnumToFourCharacterCode =
         @[
-            @"XXXX", // PJCommandInvalid
             @"POWR", // PJCommandPower
             @"INPT", // PJCommandInput
             @"AVMT", // PJCommandAVMute
@@ -127,7 +126,7 @@ static NSDictionary* gFourCharacterCodeToCommandEnum = nil;
 
 +(PJCommand) pjlinkCommandFor4cc:(NSString*) fourCC
 {
-    PJCommand ret = PJCommandInvalid;
+    PJCommand ret = NumPJCommands;
     
     if ([fourCC length] > 0)
     {

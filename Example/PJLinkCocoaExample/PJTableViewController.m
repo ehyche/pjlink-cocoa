@@ -93,12 +93,16 @@
     NSLog(@"commonInit");
     _hostTextField   = [[UITextField alloc] init];
     _portTextField   = [[UITextField alloc] init];
+    _hostTextField.textAlignment = NSTextAlignmentRight;
+    _portTextField.textAlignment = NSTextAlignmentRight;
     _hostTextField.delegate = self;
     _portTextField.delegate = self;
-    _hostTextField.text = @"127.0.0.1";
-    _portTextField.text = [[NSNumber numberWithInteger:kDefaultPJLinkPort] stringValue];
+    _hostTextField.text = @"888.888.888.888";
+    _portTextField.text = @"99999";
     [_hostTextField sizeToFit];
     [_portTextField sizeToFit];
+    _hostTextField.text = @"127.0.0.1";
+    _portTextField.text = [[NSNumber numberWithInteger:kDefaultPJLinkPort] stringValue];
     _audioMuteSwitch = [[UISwitch alloc] init];
     _videoMuteSwitch = [[UISwitch alloc] init];
     [_audioMuteSwitch sizeToFit];
@@ -209,9 +213,11 @@
             cell.detailTextLabel.text = [PJResponseInfoPowerStatusQuery stringForPowerStatus:self.projector.powerStatus];
         } else if (indexPath.row == 1) {
             cell.textLabel.text = @"Audio Mute";
+            self.audioMuteSwitch.on = self.projector.audioMuted;
             cell.accessoryView  = self.audioMuteSwitch;
         } else if (indexPath.row == 2) {
             cell.textLabel.text = @"Video Mute";
+            self.videoMuteSwitch.on = self.projector.videoMuted;
             cell.accessoryView  = self.videoMuteSwitch;
         }
     } else if (indexPath.section == 2) {
@@ -373,7 +379,7 @@
 }
 
 - (void)projectorConnectionStateDidChange:(NSNotification*)notification {
-    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView reloadData];
 }
 
 @end

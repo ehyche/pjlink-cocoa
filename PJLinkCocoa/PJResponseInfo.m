@@ -129,7 +129,7 @@ static NSDictionary* gFourCharacterCodeToCommandEnum = nil;
             NSString* commandStr = [responseStr substringWithRange:NSMakeRange(2, 4)];
             // Look up the command from the string
             PJCommand command = [PJResponseInfo pjlinkCommandFor4cc:commandStr];
-            if (command > PJCommandInvalid && command < NumPJCommands) {
+            if (command < NumPJCommands) {
                 // Make sure character 6 is an "="
                 NSString* char6Str = [responseStr substringWithRange:NSMakeRange(6, 1)];
                 if ([char6Str isEqualToString:@"="]) {
@@ -199,7 +199,7 @@ static NSDictionary* gFourCharacterCodeToCommandEnum = nil;
 +(NSString*) pjlink4ccForCommand:(PJCommand) command {
     NSString* ret = nil;
     
-    if (command > PJCommandInvalid &&  command < NumPJCommands) {
+    if (command < NumPJCommands) {
         ret = [gCommandEnumToFourCharacterCode objectAtIndex:command];
     }
     
@@ -207,7 +207,7 @@ static NSDictionary* gFourCharacterCodeToCommandEnum = nil;
 }
 
 +(PJCommand) pjlinkCommandFor4cc:(NSString*) fourCC {
-    PJCommand ret = PJCommandInvalid;
+    PJCommand ret = NumPJCommands;
     
     if ([fourCC length] > 0) {
         // Look up the command from the dictionary

@@ -8,7 +8,6 @@
 
 typedef NS_ENUM(NSInteger, PJCommand)
 {
-    PJCommandInvalid,
     PJCommandPower,
     PJCommandInput,
     PJCommandAVMute,

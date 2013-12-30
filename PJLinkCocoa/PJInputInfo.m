@@ -86,4 +86,8 @@ static NSArray* gInputTypeNames = nil;
     return ret;
 }
 
+- (NSString*)description {
+    return [NSString stringWithFormat:@"%@ %u", [PJInputInfo nameForInputType:self.inputType], self.inputNumber];
+}
+
 @end

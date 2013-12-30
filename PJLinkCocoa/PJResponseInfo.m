@@ -285,6 +285,20 @@ static NSDictionary* gFourCharacterCodeToCommandEnum = nil;
     return bRet;
 }
 
++ (NSString*)stringForPowerStatus:(PJPowerStatus)status {
+    NSString* ret = nil;
+
+    switch (status) {
+        case PJPowerStatusStandby: ret = @"Stand By"; break;
+        case PJPowerStatusWarmUp:  ret = @"Warm Up";  break;
+        case PJPowerStatusLampOn:  ret = @"Lamp On";  break;
+        case PJPowerStatusCooling: ret = @"Cooling";  break;
+        default:                   ret = @"Unknown";  break;
+    }
+
+    return ret;
+}
+
 @end
 
 @implementation PJResponseInfoInputSwitchQuery
@@ -411,6 +425,19 @@ static NSDictionary* gFourCharacterCodeToCommandEnum = nil;
     }
     
     return bRet;
+}
+
++ (NSString*)stringForErrorStatus:(PJErrorStatus)status {
+    NSString* ret = nil;
+
+    switch (status) {
+        case PJErrorStatusNoError: ret = @"OK";      break;
+        case PJErrorStatusWarning: ret = @"Warning"; break;
+        case PJErrorStatusError:   ret = @"Error";   break;
+        default:                   ret = @"Unknown"; break;
+    }
+
+    return ret;
 }
 
 @end

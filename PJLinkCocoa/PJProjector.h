@@ -122,4 +122,7 @@ extern NSString* const PJProjectorErrorKey;
 // used to switch to "RGB 1"; that is the 2nd RGB input.
 - (BOOL)requestInputChangeToInputType:(PJInputType)type number:(NSUInteger)number;
 
+// Get a human readable string for connection state
++ (NSString*)stringForConnectionState:(PJConnectionState)state;
+
 @end

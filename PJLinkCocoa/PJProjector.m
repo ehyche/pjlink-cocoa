@@ -441,6 +441,21 @@ NSTimeInterval const kPowerTransitionRefreshTimerInterval            =  5.0;
     return [self requestInputChangeToInput:[PJInputInfo inputInfoWithType:type number:number]];
 }
 
++ (NSString*)stringForConnectionState:(PJConnectionState)state {
+    NSString* ret = nil;
+
+    switch (state) {
+        case PJConnectionStateDiscovered:      ret = @"Discovered";       break;
+        case PJConnectionStateConnecting:      ret = @"Connecting";       break;
+        case PJConnectionStateConnectionError: ret = @"Connection Error"; break;
+        case PJConnectionStatePasswordError:   ret = @"Password Error";   break;
+        case PJConnectionStateConnected:       ret = @"Connected";        break;
+        default:                               ret = @"Unknown";          break;
+    }
+
+    return ret;
+}
+
 #pragma mark - PJProjector private methods
 
 - (void)setActiveInputWithType:(PJInputType)type number:(NSUInteger)number {

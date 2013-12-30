@@ -33,6 +33,8 @@
 
 @property(nonatomic,assign) PJPowerStatus powerStatus;
 
++ (NSString*)stringForPowerStatus:(PJPowerStatus)status;
+
 @end
 
 @interface PJResponseInfoInputSwitchQuery : PJResponseInfo
@@ -56,6 +58,8 @@
 @property(nonatomic,assign) PJErrorStatus coverOpenError;
 @property(nonatomic,assign) PJErrorStatus filterError;
 @property(nonatomic,assign) PJErrorStatus otherError;
+
++ (NSString*)stringForErrorStatus:(PJErrorStatus)status;
 
 @end
 

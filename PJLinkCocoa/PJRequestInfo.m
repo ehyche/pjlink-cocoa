@@ -23,6 +23,7 @@ static NSDictionary* gFourCharacterCodeToCommandEnum = nil;
     {
         gCommandEnumToFourCharacterCode =
         @[
+            @"XXXX", // PJCommandInvalid
             @"POWR", // PJCommandPower
             @"INPT", // PJCommandInput
             @"AVMT", // PJCommandAVMute
@@ -116,7 +117,7 @@ static NSDictionary* gFourCharacterCodeToCommandEnum = nil;
 {
     NSString* ret = nil;
     
-    if (command < PJCommandUnknown)
+    if (command < NumPJCommands)
     {
         ret = [gCommandEnumToFourCharacterCode objectAtIndex:command];
     }
@@ -126,7 +127,7 @@ static NSDictionary* gFourCharacterCodeToCommandEnum = nil;
 
 +(PJCommand) pjlinkCommandFor4cc:(NSString*) fourCC
 {
-    PJCommand ret = PJCommandUnknown;
+    PJCommand ret = PJCommandInvalid;
     
     if ([fourCC length] > 0)
     {
@@ -170,6 +171,33 @@ static NSDictionary* gFourCharacterCodeToCommandEnum = nil;
     }
 
     return ret;
+}
+
++ (NSString*)queryStringForCommand:(PJCommand)cmd {
+    NSString* ret = nil;
+
+    if (cmd < NumPJCommands) {
+        ret = [NSString stringWithFormat:@"%@ ?\r", [gCommandEnumToFourCharacterCode objectAtIndex:cmd]];
+    }
+
+    return ret;
+}
+
++ (NSString*)queryStringForCommands:(NSArray*)cmds {
+    NSUInteger       cmdsCount = [cmds count];
+    NSMutableString* tmp       = [NSMutableString string];
+
+    if (cmdsCount > 0) {
+        for (NSNumber* cmdNum in cmds) {
+            PJCommand cmd = (PJCommand) [cmdNum integerValue];
+            NSString* queryStr = [PJRequestInfo queryStringForCommand:cmd];
+            if ([queryStr length] > 0) {
+                [tmp appendString:queryStr];
+            }
+        }
+    }
+
+    return [NSString stringWithString:tmp];
 }
 
 @end

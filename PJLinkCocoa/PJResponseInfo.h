@@ -10,6 +10,7 @@
 #import "PJDefinitions.h"
 
 @class PJRequestInfo;
+@class PJInputInfo;
 
 @interface PJResponseInfo : NSObject
 
@@ -34,18 +35,9 @@
 
 @end
 
-@interface PJInput : NSObject
-
-@property(nonatomic,assign) PJInputType inputType;
-@property(nonatomic,assign) uint8_t     inputNumber;
-
--(BOOL) parseResponseData:(NSString*) dataStr;
-
-@end
-
 @interface PJResponseInfoInputSwitchQuery : PJResponseInfo
 
-@property(nonatomic,copy) PJInput* input;
+@property(nonatomic,copy) PJInputInfo* input;
 
 @end
 
@@ -67,13 +59,6 @@
 
 @end
 
-@interface PJLampStatus : NSObject
-
-@property(nonatomic,assign) NSUInteger cumulativeLightingTime;
-@property(nonatomic,assign) BOOL       lampOn;
-
-@end
-
 @interface PJResponseInfoLampQuery : PJResponseInfo
 
 @property(nonatomic,copy) NSArray* lampStatuses; // Array of PJLampStatus objects
@@ -82,7 +67,7 @@
 
 @interface PJResponseInfoInputTogglingListQuery : PJResponseInfo
 
-@property(nonatomic,copy) NSArray* inputs; // Array of PJInput objects
+@property(nonatomic,copy) NSArray* inputs; // Array of PJInputInfo objects
 
 @end
 

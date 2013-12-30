@@ -24,6 +24,9 @@
 
 +(PJRequestInfo*) requestInfoFromURLQueryName:(NSString*) name queryValue:(NSString*) value;
 
++ (NSString*)queryStringForCommand:(PJCommand)cmd;
++ (NSString*)queryStringForCommands:(NSArray*)cmds;
+
 @end
 
 @interface PJRequestInfoPower : PJRequestInfo

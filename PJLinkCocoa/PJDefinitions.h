@@ -6,8 +6,9 @@
 //  Copyright (c) 2012 Eric Hyche. All rights reserved.
 //
 
-typedef enum _PJCommand
+typedef NS_ENUM(NSInteger, PJCommand)
 {
+    PJCommandInvalid,
     PJCommandPower,
     PJCommandInput,
     PJCommandAVMute,
@@ -19,21 +20,19 @@ typedef enum _PJCommand
     PJCommandProductNameQuery,
     PJCommandOtherInfoQuery,
     PJCommandClassInfoQuery,
-    PJCommandUnknown
-}
-PJCommand;
+    NumPJCommands
+};
 
-typedef enum _PJPowerStatus
+typedef NS_ENUM(NSInteger, PJPowerStatus)
 {
     PJPowerStatusStandby,
     PJPowerStatusLampOn,
     PJPowerStatusCooling,
     PJPowerStatusWarmUp,
     NumPJPowerStatuses
-}
-PJPowerStatus;
+};
 
-typedef enum _PJError
+typedef NS_ENUM(NSInteger, PJError)
 {
     PJErrorOK,
     PJErrorUndefinedCommand,
@@ -41,33 +40,43 @@ typedef enum _PJError
     PJErrorCommandUnavailable,
     PJErrorProjectorFailure,
     NumPJErrors
-}
-PJError;
+};
 
-typedef enum _PJInputType
+typedef NS_ENUM(NSInteger, PJInputType)
 {
+    PJInputTypeInvalid = 0,
     PJInputTypeRGB     = 1,
     PJInputTypeVideo   = 2,
     PJInputTypeDigital = 3,
     PJInputTypeStorage = 4,
-    PJInputTypeNetwork = 5
-}
-PJInputType;
+    PJInputTypeNetwork = 5,
+    NumPJInputTypes    = 6
+};
 
-typedef enum _PJMuteType
+typedef NS_ENUM(NSInteger, PJMuteType)
 {
     PJMuteTypeVideo         = 1,
     PJMuteTypeAudio         = 2,
     PJMuteTypeAudioAndVideo = PJMuteTypeAudio | PJMuteTypeVideo
-}
-PJMuteType;
+};
 
-typedef enum _PJErrorStatus
+typedef NS_ENUM(NSInteger, PJErrorStatus)
 {
     PJErrorStatusNoError,
     PJErrorStatusWarning,
     PJErrorStatusError,
     NumPJErrorStatuses
-}
-PJErrorStatus;
+};
+
+typedef NS_ENUM(NSInteger, PJConnectionState)
+{
+    PJConnectionStateDiscovered,       // Initial state - No PJLink network connections attempted yet
+    PJConnectionStateConnecting,       // First PJLink network connection attempt is in progress
+    PJConnectionStatePasswordError,    // First PJLink network connection attempt resulted in password failure
+    PJConnectionStateConnectionError,  // First PJLink network connection attempt resulted in network error other than password
+    PJConnectionStateConnected,        // First and subsequent PJLink network connection attempts succeeded
+    NumPJConnectionStates
+};
+
+#define kDefaultPJLinkPort 4352
 

@@ -9,6 +9,8 @@
 #import "PJResponseInfo.h"
 #import "PJDefinitions.h"
 #import "PJURLProtocolRunLoop.h"
+#import "PJInputInfo.h"
+#import "PJLampStatus.h"
 
 static NSArray*      gCommandToResponseClassMap = nil;
 static NSDictionary* gErrorStringToPJErrorMap   = nil;
@@ -127,7 +129,7 @@ static NSDictionary* gFourCharacterCodeToCommandEnum = nil;
             NSString* commandStr = [responseStr substringWithRange:NSMakeRange(2, 4)];
             // Look up the command from the string
             PJCommand command = [PJResponseInfo pjlinkCommandFor4cc:commandStr];
-            if (command < PJCommandUnknown) {
+            if (command > PJCommandInvalid && command < NumPJCommands) {
                 // Make sure character 6 is an "="
                 NSString* char6Str = [responseStr substringWithRange:NSMakeRange(6, 1)];
                 if ([char6Str isEqualToString:@"="]) {
@@ -197,7 +199,7 @@ static NSDictionary* gFourCharacterCodeToCommandEnum = nil;
 +(NSString*) pjlink4ccForCommand:(PJCommand) command {
     NSString* ret = nil;
     
-    if (command < PJCommandUnknown) {
+    if (command > PJCommandInvalid &&  command < NumPJCommands) {
         ret = [gCommandEnumToFourCharacterCode objectAtIndex:command];
     }
     
@@ -205,7 +207,7 @@ static NSDictionary* gFourCharacterCodeToCommandEnum = nil;
 }
 
 +(PJCommand) pjlinkCommandFor4cc:(NSString*) fourCC {
-    PJCommand ret = PJCommandUnknown;
+    PJCommand ret = PJCommandInvalid;
     
     if ([fourCC length] > 0) {
         // Look up the command from the dictionary
@@ -285,49 +287,6 @@ static NSDictionary* gFourCharacterCodeToCommandEnum = nil;
 
 @end
 
-@implementation PJInput
-
-@synthesize inputType;
-@synthesize inputNumber;
-
-- (id)copyWithZone:(NSZone*)zone {
-    PJInput* inputCopy = [[PJInput alloc] init];
-    inputCopy.inputType   = self.inputType;
-    inputCopy.inputNumber = self.inputNumber;
-
-    return inputCopy;
-}
-
--(BOOL) parseResponseData:(NSString*) dataStr {
-    BOOL bRet = NO;
-
-    if ([dataStr length] == 2) {
-        // Scan the input type
-        NSInteger inputTypeInt = 0;
-        BOOL bScanRet = [PJResponseInfo scanInteger:&inputTypeInt fromRange:NSMakeRange(0, 1) inString:dataStr];
-        if (bScanRet) {
-            // Scan the input number
-            NSInteger inputNumberInt = 0;
-            bScanRet = [PJResponseInfo scanInteger:&inputNumberInt fromRange:NSMakeRange(1, 1) inString:dataStr];
-            if (bScanRet) {
-                // Check validity of these scanned integers
-                if (inputTypeInt >= PJInputTypeRGB && inputTypeInt <= PJInputTypeNetwork &&
-                    inputNumberInt >= 1 && inputNumberInt <= 9) {
-                    self.inputType   = inputTypeInt;
-                    self.inputNumber = (uint8_t) inputNumberInt;
-                    // Set the flag saying we parsed successfully
-                    bRet = YES;
-                }
-            }
-        }
-    }
-
-    return bRet;
-}
-
-
-@end
-
 @implementation PJResponseInfoInputSwitchQuery
 
 @synthesize input;
@@ -336,8 +295,8 @@ static NSDictionary* gFourCharacterCodeToCommandEnum = nil;
     // See if the response is one of the errors
     BOOL bRet = [super parseResponseData:dataStr];
     if (!bRet) {
-        // Create a PJInput
-        PJInput* tmp = [[PJInput alloc] init];
+        // Create a PJInputInfo
+        PJInputInfo* tmp = [[PJInputInfo alloc] init];
         bRet = [tmp parseResponseData:dataStr];
         if (bRet) {
             self.input = tmp;
@@ -456,13 +415,6 @@ static NSDictionary* gFourCharacterCodeToCommandEnum = nil;
 
 @end
 
-@implementation PJLampStatus
-
-@synthesize cumulativeLightingTime;
-@synthesize lampOn;
-
-@end
-
 @implementation PJResponseInfoLampQuery
 
 @synthesize lampStatuses;
@@ -539,13 +491,13 @@ static NSDictionary* gFourCharacterCodeToCommandEnum = nil;
         NSMutableArray* tmp = [NSMutableArray arrayWithCapacity:numDataComponents];
         // Iterate through the components
         for (NSString* dataComponent in dataComponents) {
-            // Create a PJInput
-            PJInput* tmpInput = [[PJInput alloc] init];
+            // Create a PJInputInfo
+            PJInputInfo* tmpInputInfo = [[PJInputInfo alloc] init];
             // Parse the input
-            BOOL bParse = [tmpInput parseResponseData:dataComponent];
+            BOOL bParse = [tmpInputInfo parseResponseData:dataComponent];
             if (bParse) {
                 // Add it to the output array
-                [tmp addObject:tmpInput];
+                [tmp addObject:tmpInputInfo];
             }
         }
         if ([tmp count] > 0) {

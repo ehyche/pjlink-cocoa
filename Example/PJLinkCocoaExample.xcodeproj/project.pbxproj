@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		37CC4D0831FC4BBFA69D7736 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA86D9F9553149F18F63156F /* libPods.a */; };
+		FD078E0B1870B9BC000C8982 /* PJInputInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD078E041870B9BC000C8982 /* PJInputInfo.m */; };
+		FD078E0C1870B9BC000C8982 /* PJLampStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = FD078E061870B9BC000C8982 /* PJLampStatus.m */; };
+		FD078E0D1870B9BC000C8982 /* PJProjector.m in Sources */ = {isa = PBXBuildFile; fileRef = FD078E081870B9BC000C8982 /* PJProjector.m */; };
+		FD078E0E1870B9BC000C8982 /* PJRequestInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD078E0A1870B9BC000C8982 /* PJRequestInfo.m */; };
 		FD07EAE91788D50B0012AF4A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD07EAE81788D50B0012AF4A /* UIKit.framework */; };
 		FD07EAEB1788D50B0012AF4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD07EAEA1788D50B0012AF4A /* Foundation.framework */; };
 		FD07EAED1788D50B0012AF4A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD07EAEC1788D50B0012AF4A /* CoreGraphics.framework */; };
@@ -28,6 +32,14 @@
 /* Begin PBXFileReference section */
 		9B01DB32E7AC421B93134383 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		CA86D9F9553149F18F63156F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD078E031870B9BC000C8982 /* PJInputInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PJInputInfo.h; path = ../PJLinkCocoa/PJInputInfo.h; sourceTree = "<group>"; };
+		FD078E041870B9BC000C8982 /* PJInputInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PJInputInfo.m; path = ../PJLinkCocoa/PJInputInfo.m; sourceTree = "<group>"; };
+		FD078E051870B9BC000C8982 /* PJLampStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PJLampStatus.h; path = ../PJLinkCocoa/PJLampStatus.h; sourceTree = "<group>"; };
+		FD078E061870B9BC000C8982 /* PJLampStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PJLampStatus.m; path = ../PJLinkCocoa/PJLampStatus.m; sourceTree = "<group>"; };
+		FD078E071870B9BC000C8982 /* PJProjector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PJProjector.h; path = ../PJLinkCocoa/PJProjector.h; sourceTree = "<group>"; };
+		FD078E081870B9BC000C8982 /* PJProjector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PJProjector.m; path = ../PJLinkCocoa/PJProjector.m; sourceTree = "<group>"; };
+		FD078E091870B9BC000C8982 /* PJRequestInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PJRequestInfo.h; path = ../PJLinkCocoa/PJRequestInfo.h; sourceTree = "<group>"; };
+		FD078E0A1870B9BC000C8982 /* PJRequestInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PJRequestInfo.m; path = ../PJLinkCocoa/PJRequestInfo.m; sourceTree = "<group>"; };
 		FD07EAE51788D50B0012AF4A /* PJLinkCocoaExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PJLinkCocoaExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD07EAE81788D50B0012AF4A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FD07EAEA1788D50B0012AF4A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -130,6 +142,14 @@
 		FD5E546F1788F1A400AE0849 /* PJLinkCocoa */ = {
 			isa = PBXGroup;
 			children = (
+				FD078E031870B9BC000C8982 /* PJInputInfo.h */,
+				FD078E041870B9BC000C8982 /* PJInputInfo.m */,
+				FD078E051870B9BC000C8982 /* PJLampStatus.h */,
+				FD078E061870B9BC000C8982 /* PJLampStatus.m */,
+				FD078E071870B9BC000C8982 /* PJProjector.h */,
+				FD078E081870B9BC000C8982 /* PJProjector.m */,
+				FD078E091870B9BC000C8982 /* PJRequestInfo.h */,
+				FD078E0A1870B9BC000C8982 /* PJRequestInfo.m */,
 				FD5E547C1788F32300AE0849 /* PJDefinitions.h */,
 				FD5E54761788F2B000AE0849 /* PJResponseInfo.h */,
 				FD5E54771788F2B000AE0849 /* PJResponseInfo.m */,
@@ -245,10 +265,14 @@
 			files = (
 				FD07EAF51788D50B0012AF4A /* main.m in Sources */,
 				FD07EAF91788D50B0012AF4A /* PJAppDelegate.m in Sources */,
+				FD078E0D1870B9BC000C8982 /* PJProjector.m in Sources */,
 				FD07EB051788D50B0012AF4A /* PJViewController.m in Sources */,
+				FD078E0C1870B9BC000C8982 /* PJLampStatus.m in Sources */,
 				FD5E54741788F20500AE0849 /* AFPJLinkClient.m in Sources */,
 				FD5E54751788F20500AE0849 /* AFPJLinkRequestOperation.m in Sources */,
 				FD5E547A1788F2B000AE0849 /* PJResponseInfo.m in Sources */,
+				FD078E0E1870B9BC000C8982 /* PJRequestInfo.m in Sources */,
+				FD078E0B1870B9BC000C8982 /* PJInputInfo.m in Sources */,
 				FD5E547B1788F2B000AE0849 /* PJURLProtocolRunLoop.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

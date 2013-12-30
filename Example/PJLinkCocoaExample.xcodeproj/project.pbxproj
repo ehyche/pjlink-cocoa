@@ -12,6 +12,7 @@
 		FD078E0C1870B9BC000C8982 /* PJLampStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = FD078E061870B9BC000C8982 /* PJLampStatus.m */; };
 		FD078E0D1870B9BC000C8982 /* PJProjector.m in Sources */ = {isa = PBXBuildFile; fileRef = FD078E081870B9BC000C8982 /* PJProjector.m */; };
 		FD078E0E1870B9BC000C8982 /* PJRequestInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD078E0A1870B9BC000C8982 /* PJRequestInfo.m */; };
+		FD078E111870FE5C000C8982 /* PJTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD078E101870FE5C000C8982 /* PJTableViewController.m */; };
 		FD07EAE91788D50B0012AF4A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD07EAE81788D50B0012AF4A /* UIKit.framework */; };
 		FD07EAEB1788D50B0012AF4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD07EAEA1788D50B0012AF4A /* Foundation.framework */; };
 		FD07EAED1788D50B0012AF4A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD07EAEC1788D50B0012AF4A /* CoreGraphics.framework */; };
@@ -40,6 +41,8 @@
 		FD078E081870B9BC000C8982 /* PJProjector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PJProjector.m; path = ../PJLinkCocoa/PJProjector.m; sourceTree = "<group>"; };
 		FD078E091870B9BC000C8982 /* PJRequestInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PJRequestInfo.h; path = ../PJLinkCocoa/PJRequestInfo.h; sourceTree = "<group>"; };
 		FD078E0A1870B9BC000C8982 /* PJRequestInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PJRequestInfo.m; path = ../PJLinkCocoa/PJRequestInfo.m; sourceTree = "<group>"; };
+		FD078E0F1870FE5C000C8982 /* PJTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJTableViewController.h; sourceTree = "<group>"; };
+		FD078E101870FE5C000C8982 /* PJTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJTableViewController.m; sourceTree = "<group>"; };
 		FD07EAE51788D50B0012AF4A /* PJLinkCocoaExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PJLinkCocoaExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD07EAE81788D50B0012AF4A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FD07EAEA1788D50B0012AF4A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -120,6 +123,8 @@
 				FD07EB001788D50B0012AF4A /* MainStoryboard.storyboard */,
 				FD07EB031788D50B0012AF4A /* PJViewController.h */,
 				FD07EB041788D50B0012AF4A /* PJViewController.m */,
+				FD078E0F1870FE5C000C8982 /* PJTableViewController.h */,
+				FD078E101870FE5C000C8982 /* PJTableViewController.m */,
 				FD07EAEF1788D50B0012AF4A /* Supporting Files */,
 			);
 			path = PJLinkCocoaExample;
@@ -274,6 +279,7 @@
 				FD078E0E1870B9BC000C8982 /* PJRequestInfo.m in Sources */,
 				FD078E0B1870B9BC000C8982 /* PJInputInfo.m in Sources */,
 				FD5E547B1788F2B000AE0849 /* PJURLProtocolRunLoop.m in Sources */,
+				FD078E111870FE5C000C8982 /* PJTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

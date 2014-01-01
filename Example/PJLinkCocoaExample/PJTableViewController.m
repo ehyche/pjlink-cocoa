@@ -21,6 +21,7 @@
  *  Status
  *
  *  Power            Stand By
+ *  Toggle           UISwitch
  *  Audio Mute       UISwitch
  *  Video Mute       UISwitch
  *
@@ -55,6 +56,8 @@
 
 @property(nonatomic,strong) UITextField*             hostTextField;
 @property(nonatomic,strong) UITextField*             portTextField;
+@property(nonatomic,strong) UIActivityIndicatorView* powerSwitchSpinner;
+@property(nonatomic,strong) UISwitch*                powerSwitch;
 @property(nonatomic,strong) UISwitch*                audioMuteSwitch;
 @property(nonatomic,strong) UISwitch*                videoMuteSwitch;
 @property(nonatomic,strong) PJProjector*             projector;
@@ -93,6 +96,7 @@
     NSLog(@"commonInit");
     _hostTextField   = [[UITextField alloc] init];
     _portTextField   = [[UITextField alloc] init];
+    _powerSwitchSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     _hostTextField.textAlignment = NSTextAlignmentRight;
     _portTextField.textAlignment = NSTextAlignmentRight;
     _hostTextField.delegate = self;
@@ -101,12 +105,16 @@
     _portTextField.text = @"99999";
     [_hostTextField sizeToFit];
     [_portTextField sizeToFit];
+    [_powerSwitchSpinner sizeToFit];
     _hostTextField.text = @"127.0.0.1";
     _portTextField.text = [[NSNumber numberWithInteger:kDefaultPJLinkPort] stringValue];
+    _powerSwitch     = [[UISwitch alloc] init];
     _audioMuteSwitch = [[UISwitch alloc] init];
     _videoMuteSwitch = [[UISwitch alloc] init];
+    [_powerSwitch sizeToFit];
     [_audioMuteSwitch sizeToFit];
     [_videoMuteSwitch sizeToFit];
+    [_powerSwitch     addTarget:self action:@selector(switchValueChanged:) forControlEvents:UIControlEventValueChanged];
     [_audioMuteSwitch addTarget:self action:@selector(switchValueChanged:) forControlEvents:UIControlEventValueChanged];
     [_videoMuteSwitch addTarget:self action:@selector(switchValueChanged:) forControlEvents:UIControlEventValueChanged];
     _projector       = [[PJProjector alloc] initWithHost:@"127.0.0.1"];
@@ -144,7 +152,7 @@
     if (section == 0) {
         ret = 3;
     } else if (section == 1) {
-        ret = 3;
+        ret = 4;
     } else if (section == 2) {
         ret = [self.projector countOfInputs];
     } else if (section == 3) {
@@ -176,7 +184,7 @@
         if (indexPath.row == 0) {
             cellID    = CellIDValue1;
             cellStyle = UITableViewCellStyleValue1;
-        } else if (indexPath.row == 1 || indexPath.row == 2) {
+        } else if (indexPath.row == 1 || indexPath.row == 2 || indexPath.row == 3) {
             cellID    = CellIDSwitch;
             cellStyle = UITableViewCellStyleDefault;
         }
@@ -212,10 +220,22 @@
             cell.textLabel.text       = @"Power";
             cell.detailTextLabel.text = [PJResponseInfoPowerStatusQuery stringForPowerStatus:self.projector.powerStatus];
         } else if (indexPath.row == 1) {
+            cell.textLabel.text = @"Toggle";
+            if (self.projector.powerStatus == PJPowerStatusCooling ||
+                self.projector.powerStatus == PJPowerStatusWarmUp) {
+                [self.powerSwitchSpinner startAnimating];
+                cell.accessoryView = self.powerSwitchSpinner;
+            } else if (self.projector.powerStatus == PJPowerStatusStandby ||
+                       self.projector.powerStatus == PJPowerStatusLampOn) {
+                [self.powerSwitchSpinner stopAnimating];
+                self.powerSwitch.on = (self.projector.powerStatus == PJPowerStatusLampOn ? YES : NO);
+                cell.accessoryView = self.powerSwitch;
+            }
+        } else if (indexPath.row == 2) {
             cell.textLabel.text = @"Audio Mute";
             self.audioMuteSwitch.on = self.projector.audioMuted;
             cell.accessoryView  = self.audioMuteSwitch;
-        } else if (indexPath.row == 2) {
+        } else if (indexPath.row == 3) {
             cell.textLabel.text = @"Video Mute";
             self.videoMuteSwitch.on = self.projector.videoMuted;
             cell.accessoryView  = self.videoMuteSwitch;
@@ -311,7 +331,7 @@
     [self.portTextField resignFirstResponder];
 
     NSInteger port = [self.portTextField.text integerValue];
-    if (![self.projector.host isEqualToString:self.hostTextField.text] || self.projector.port == port) {
+    if (![self.projector.host isEqualToString:self.hostTextField.text] || self.projector.port != port) {
         // Create a new projector object
         self.projector = [[PJProjector alloc] initWithHost:self.hostTextField.text port:port];
     }
@@ -320,7 +340,9 @@
 }
 
 - (void)switchValueChanged:(id)sender {
-    if (sender == self.audioMuteSwitch) {
+    if (sender == self.powerSwitch) {
+        [self.projector requestPowerStateChange:self.powerSwitch.on];
+    } else if (sender == self.audioMuteSwitch) {
         [self.projector requestMuteStateChange:self.audioMuteSwitch.on forTypes:PJMuteTypeAudio];
     } else if (sender == self.videoMuteSwitch) {
         [self.projector requestMuteStateChange:self.videoMuteSwitch.on forTypes:PJMuteTypeVideo];

@@ -332,12 +332,14 @@ NSTimeInterval const kPowerTransitionRefreshTimerInterval            =  5.0;
 }
 
 - (void)refreshAllQueries {
+    // Note that we must always put PJCommandInput after PJCommandInputListQuery since
+    // PJCommandInputListQuery populates the input list and PJCommandInput chooses from that list.
     [self refreshQueries:@[@(PJCommandPower),
-                           @(PJCommandInput),
                            @(PJCommandAVMute),
                            @(PJCommandErrorQuery),
                            @(PJCommandLampQuery),
                            @(PJCommandInputListQuery),
+                           @(PJCommandInput),
                            @(PJCommandProjectorNameQuery),
                            @(PJCommandManufacturerNameQuery),
                            @(PJCommandProductNameQuery),
@@ -364,12 +366,14 @@ NSTimeInterval const kPowerTransitionRefreshTimerInterval            =  5.0;
 }
 
 - (void)refreshQueriesWeExpectToChange {
+    // Note that we must always put PJCommandInput after PJCommandInputListQuery since
+    // PJCommandInputListQuery populates the input list and PJCommandInput chooses from that list.
     [self refreshQueries:@[@(PJCommandPower),
+                           @(PJCommandInputListQuery),
                            @(PJCommandInput),
                            @(PJCommandAVMute),
                            @(PJCommandErrorQuery),
-                           @(PJCommandLampQuery),
-                           @(PJCommandInputListQuery)]];
+                           @(PJCommandLampQuery)]];
 }
 
 - (BOOL)requestPowerStateChange:(BOOL)powerOn {
@@ -429,7 +433,7 @@ NSTimeInterval const kPowerTransitionRefreshTimerInterval            =  5.0;
 - (BOOL)requestInputChangeToInputIndex:(NSUInteger)inputIndex {
     BOOL ret = NO;
 
-    if (inputIndex < [self.inputs count]) {
+    if (inputIndex < [self.mutableInputs count]) {
         PJInputInfo* inputInfo = [self.mutableInputs objectAtIndex:inputIndex];
         ret = [self requestInputChangeToInput:inputInfo];
     }

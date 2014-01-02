@@ -18,7 +18,6 @@ extern NSString* const PJProjectorConnectionStateDidChangeNotification;
 extern NSString* const PJProjectorErrorKey;
 
 @class PJInputInfo;
-@class PJAMXBeaconHost;
 
 @interface PJProjector : NSObject
 
@@ -68,9 +67,6 @@ extern NSString* const PJProjectorErrorKey;
 // Init with just an IP address and optional port
 - (id)initWithHost:(NSString*)host;
 - (id)initWithHost:(NSString*)host port:(NSInteger)port;
-
-// Init with a PJAMXBeaconHost object
-- (id)initWithBeaconHost:(PJAMXBeaconHost*)beaconHost;
 
 // Refresh the specified queries
 - (void)refreshQueries:(NSArray*)queries;

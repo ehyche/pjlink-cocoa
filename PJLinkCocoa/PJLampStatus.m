@@ -8,7 +8,29 @@
 
 #import "PJLampStatus.h"
 
+NSString* const kPJLampStatusArchiveKeyLampOn                 = @"PJLampStatusLampOn";
+NSString* const kPJLampStatusArchiveKeyCumulativeLightingTime = @"PJLampStatusCumulativeLightingTime";
+
 @implementation PJLampStatus
+
+#pragma mark - NSCoding methods
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    if (self) {
+        [aDecoder decodeBoolForKey:kPJLampStatusArchiveKeyLampOn];
+        [aDecoder decodeIntegerForKey:kPJLampStatusArchiveKeyCumulativeLightingTime];
+    }
+
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeBool:self.lampOn                    forKey:kPJLampStatusArchiveKeyLampOn];
+    [aCoder encodeInteger:self.cumulativeLightingTime forKey:kPJLampStatusArchiveKeyCumulativeLightingTime];
+}
+
+#pragma mark - PJLampStatus public methods
 
 + (PJLampStatus*)lampStatusWithOn:(BOOL)on cumulativeLightingTime:(NSUInteger)time {
     PJLampStatus* ret = [[PJLampStatus alloc] init];

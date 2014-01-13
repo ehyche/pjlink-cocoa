@@ -11,7 +11,40 @@
 
 static NSArray* gInputTypeNames = nil;
 
+NSString* const kPJInputInfoArchiveKeyInputType   = @"PJInputInfoInputType";
+NSString* const kPJInputInfoArchiveKeyInputNumber = @"PJInputInfoInputNumber";
+
 @implementation PJInputInfo
+
+#pragma mark - NSCoding methods
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    if (self) {
+        self.inputType   = [aDecoder decodeIntegerForKey:kPJInputInfoArchiveKeyInputType];
+        self.inputNumber = [aDecoder decodeIntegerForKey:kPJInputInfoArchiveKeyInputNumber];
+    }
+
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeInteger:self.inputType   forKey:kPJInputInfoArchiveKeyInputType];
+    [aCoder encodeInteger:self.inputNumber forKey:kPJInputInfoArchiveKeyInputNumber];
+}
+
+#pragma mark - NSCopying methods
+
+- (id)copyWithZone:(NSZone*)zone {
+    PJInputInfo* inputCopy = [[PJInputInfo alloc] init];
+
+    inputCopy.inputType   = self.inputType;
+    inputCopy.inputNumber = self.inputNumber;
+
+    return inputCopy;
+}
+
+#pragma mark - PJInputInfo public methods
 
 +(void) initialize {
     if (self == [PJInputInfo class]) {
@@ -34,15 +67,6 @@ static NSArray* gInputTypeNames = nil;
     }
 
     return ret;
-}
-
-- (id)copyWithZone:(NSZone*)zone {
-    PJInputInfo* inputCopy = [[PJInputInfo alloc] init];
-
-    inputCopy.inputType   = self.inputType;
-    inputCopy.inputNumber = self.inputNumber;
-
-    return inputCopy;
 }
 
 -(BOOL) parseResponseData:(NSString*) dataStr {

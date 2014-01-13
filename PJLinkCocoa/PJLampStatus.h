@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PJLampStatus : NSObject
+@interface PJLampStatus : NSObject <NSCoding>
 
 @property(nonatomic,assign) BOOL       lampOn;
 @property(nonatomic,assign) NSUInteger cumulativeLightingTime;

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "PJDefinitions.h"
 
-@interface PJInputInfo : NSObject <NSCopying>
+@interface PJInputInfo : NSObject <NSCopying, NSCoding>
 
 @property(nonatomic,assign) PJInputType inputType;
 @property(nonatomic,assign) NSUInteger  inputNumber;

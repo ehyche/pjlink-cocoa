@@ -23,6 +23,29 @@ NSString*      const kPJLinkCommandPowerOff                          = @"POWR 0\
 NSTimeInterval const kDefaultRefreshTimerInterval                    = 60.0;
 NSTimeInterval const kPowerTransitionRefreshTimerInterval            =  5.0;
 
+// NSKeyedArchiver key names
+NSString* const kPJProjectorArchiveKeyPowerStatus            = @"PJProjectorPowerStatus";
+NSString* const kPJProjectorArchiveKeyAudioMuted             = @"PJProjectorAudioMuted";
+NSString* const kPJProjectorArchiveKeyVideoMuted             = @"PJProjectorVideoMuted";
+NSString* const kPJProjectorArchiveKeyFanErrorStatus         = @"PJProjectorFanErrorStatus";
+NSString* const kPJProjectorArchiveKeyLampErrorStatus        = @"PJProjectorLampErrorStatus";
+NSString* const kPJProjectorArchiveKeyTemperatureErrorStatus = @"PJProjectorTemperatureErrorStatus";
+NSString* const kPJProjectorArchiveKeyCoverOpenErrorStatus   = @"PJProjectorCoverOpenErrorStatus";
+NSString* const kPJProjectorArchiveKeyFilterErrorStatus      = @"PJProjectorFilterErrorStatus";
+NSString* const kPJProjectorArchiveKeyOtherErrorStatus       = @"PJProjectorOtherErrorStatus";
+NSString* const kPJProjectorArchiveKeyLampStatus             = @"PJProjectorLampStatus";
+NSString* const kPJProjectorArchiveKeyInputs                 = @"PJProjectorInputs";
+NSString* const kPJProjectorArchiveKeyActiveInputIndex       = @"PJProjectorActiveInputIndex";
+NSString* const kPJProjectorArchiveKeyProjectorName          = @"PJProjectorProjectorName";
+NSString* const kPJProjectorArchiveKeyManufacturerName       = @"PJProjectorManufacturerName";
+NSString* const kPJProjectorArchiveKeyProductName            = @"PJProjectorProductName";
+NSString* const kPJProjectorArchiveKeyOtherInformation       = @"PJProjectorOtherInformation";
+NSString* const kPJProjectorArchiveKeyClass2Compatible       = @"PJProjectorClass2Compatible";
+NSString* const kPJProjectorArchiveKeyHost                   = @"PJProjectorHost";
+NSString* const kPJProjectorArchiveKeyPort                   = @"PJProjectorPort";
+NSString* const kPJProjectorArchiveKeyUserDefinedName        = @"PJProjectorUserDefinedName";
+NSString* const kPJProjectorArchiveKeyPassword               = @"PJProjectorPassword";
+
 @interface PJProjector()
 
 // Readwrite versions of public readonly properties
@@ -62,6 +85,76 @@ NSTimeInterval const kPowerTransitionRefreshTimerInterval            =  5.0;
 @end
 
 @implementation PJProjector
+
+#pragma mark - NSCoding methods
+
+- (id)initWithCoder:(NSCoder *)aDecoder  {
+    self = [super init];
+    if (self) {
+        self.connectionState      = PJConnectionStateDiscovered;
+        self.refreshTimerInterval = kDefaultRefreshTimerInterval;
+        self.refreshTimerOn       = NO;
+        // Initialize mutable members
+        self.mutableInputs           = [NSMutableArray array];
+        self.mutableLampStatus       = [NSMutableArray array];
+        self.mutableProjectorName    = [NSMutableString string];
+        self.mutableManufacturerName = [NSMutableString string];
+        self.mutableProductName      = [NSMutableString string];
+        self.mutableOtherInformation = [NSMutableString string];
+        // Decode members
+        self.powerStatus            = [aDecoder decodeIntegerForKey:kPJProjectorArchiveKeyPowerStatus];
+        self.audioMuted             = [aDecoder decodeBoolForKey:kPJProjectorArchiveKeyAudioMuted];
+        self.videoMuted             = [aDecoder decodeBoolForKey:kPJProjectorArchiveKeyVideoMuted];
+        self.fanErrorStatus         = [aDecoder decodeIntegerForKey:kPJProjectorArchiveKeyFanErrorStatus];
+        self.lampErrorStatus        = [aDecoder decodeIntegerForKey:kPJProjectorArchiveKeyLampErrorStatus];
+        self.temperatureErrorStatus = [aDecoder decodeIntegerForKey:kPJProjectorArchiveKeyTemperatureErrorStatus];
+        self.coverOpenErrorStatus   = [aDecoder decodeIntegerForKey:kPJProjectorArchiveKeyCoverOpenErrorStatus];
+        self.filterErrorStatus      = [aDecoder decodeIntegerForKey:kPJProjectorArchiveKeyFilterErrorStatus];
+        self.otherErrorStatus       = [aDecoder decodeIntegerForKey:kPJProjectorArchiveKeyOtherErrorStatus];
+        self.lampStatus             = [aDecoder decodeObjectForKey:kPJProjectorArchiveKeyLampStatus];
+        self.inputs                 = [aDecoder decodeObjectForKey:kPJProjectorArchiveKeyInputs];
+        self.activeInputIndex       = [aDecoder decodeIntegerForKey:kPJProjectorArchiveKeyActiveInputIndex];
+        self.projectorName          = [aDecoder decodeObjectForKey:kPJProjectorArchiveKeyProjectorName];
+        self.manufacturerName       = [aDecoder decodeObjectForKey:kPJProjectorArchiveKeyManufacturerName];
+        self.productName            = [aDecoder decodeObjectForKey:kPJProjectorArchiveKeyProductName];
+        self.otherInformation       = [aDecoder decodeObjectForKey:kPJProjectorArchiveKeyOtherInformation];
+        self.class2Compatible       = [aDecoder decodeBoolForKey:kPJProjectorArchiveKeyClass2Compatible];
+        self.host                   = [aDecoder decodeObjectForKey:kPJProjectorArchiveKeyHost];
+        self.port                   = [aDecoder decodeIntegerForKey:kPJProjectorArchiveKeyPort];
+        self.userDefinedName        = [aDecoder decodeObjectForKey:kPJProjectorArchiveKeyUserDefinedName];
+        self.password               = [aDecoder decodeObjectForKey:kPJProjectorArchiveKeyPassword];
+        // Create the AFPJLinkClient
+        [self rebuildPJLinkClient];
+    }
+
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeInteger:self.powerStatus            forKey:kPJProjectorArchiveKeyPowerStatus];
+    [aCoder encodeBool:self.isAudioMuted              forKey:kPJProjectorArchiveKeyAudioMuted];
+    [aCoder encodeBool:self.isVideoMuted              forKey:kPJProjectorArchiveKeyVideoMuted];
+    [aCoder encodeInteger:self.fanErrorStatus         forKey:kPJProjectorArchiveKeyFanErrorStatus];
+    [aCoder encodeInteger:self.lampErrorStatus        forKey:kPJProjectorArchiveKeyLampErrorStatus];
+    [aCoder encodeInteger:self.temperatureErrorStatus forKey:kPJProjectorArchiveKeyTemperatureErrorStatus];
+    [aCoder encodeInteger:self.coverOpenErrorStatus   forKey:kPJProjectorArchiveKeyCoverOpenErrorStatus];
+    [aCoder encodeInteger:self.filterErrorStatus      forKey:kPJProjectorArchiveKeyFilterErrorStatus];
+    [aCoder encodeInteger:self.otherErrorStatus       forKey:kPJProjectorArchiveKeyOtherErrorStatus];
+    [aCoder encodeObject:self.mutableLampStatus       forKey:kPJProjectorArchiveKeyLampStatus];
+    [aCoder encodeObject:self.mutableInputs           forKey:kPJProjectorArchiveKeyInputs];
+    [aCoder encodeInteger:self.activeInputIndex       forKey:kPJProjectorArchiveKeyActiveInputIndex];
+    [aCoder encodeObject:self.projectorName           forKey:kPJProjectorArchiveKeyProjectorName];
+    [aCoder encodeObject:self.manufacturerName        forKey:kPJProjectorArchiveKeyManufacturerName];
+    [aCoder encodeObject:self.productName             forKey:kPJProjectorArchiveKeyProductName];
+    [aCoder encodeObject:self.otherInformation        forKey:kPJProjectorArchiveKeyOtherInformation];
+    [aCoder encodeBool:self.isClass2Compatible        forKey:kPJProjectorArchiveKeyClass2Compatible];
+    [aCoder encodeObject:self.host                    forKey:kPJProjectorArchiveKeyHost];
+    [aCoder encodeInteger:self.port                   forKey:kPJProjectorArchiveKeyPort];
+    [aCoder encodeObject:self.userDefinedName         forKey:kPJProjectorArchiveKeyUserDefinedName];
+    [aCoder encodeObject:self.password                forKey:kPJProjectorArchiveKeyPassword];
+}
+
+#pragma mark - PJProjector public methods
 
 - (id)initWithHost:(NSString*)host {
     return [self initWithHost:host port:kDefaultPJLinkPort];
@@ -151,6 +244,23 @@ NSTimeInterval const kPowerTransitionRefreshTimerInterval            =  5.0;
         self.modelChanged = YES;
         [self.mutableOtherInformation setString:otherInformation];
     }
+}
+
+- (NSString*)displayName {
+    NSString* ret = self.userDefinedName;
+    if ([ret length] == 0) {
+        NSString* projName = @"Projector";
+        if ([self.mutableProjectorName length] > 0) {
+            projName = self.mutableProjectorName;
+        }
+        if (self.includeHostInDisplayName) {
+            ret = [NSString stringWithFormat:@"%@@%@", projName, self.host];
+        } else {
+            ret = [projName copy];
+        }
+    }
+
+    return ret;
 }
 
 - (NSUInteger)countOfInputs {

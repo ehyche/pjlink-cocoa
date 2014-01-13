@@ -19,7 +19,7 @@ extern NSString* const PJProjectorErrorKey;
 
 @class PJInputInfo;
 
-@interface PJProjector : NSObject
+@interface PJProjector : NSObject <NSCoding>
 
 // PJLink properties
 @property(nonatomic,assign,readonly)                           PJPowerStatus powerStatus;
@@ -39,6 +39,29 @@ extern NSString* const PJProjectorErrorKey;
 @property(nonatomic,copy,readonly)                             NSString*     productName;
 @property(nonatomic,copy,readonly)                             NSString*     otherInformation;
 @property(nonatomic,assign,readonly,getter=isClass2Compatible) BOOL          class2Compatible;
+// Oftentimes the user of the projector will not go into
+// the projector settings and change the projector name.
+// Therefore, many projectors may have the same name
+// in their projectorName property if they are projectors
+// of the same model. However, the user of the app may want
+// to assign an arbitrary name to the projector like
+// "Conference Room 4 Left". So that is the purpose
+// of the .userDefinedName property. If assigned by
+// the user, it will be used for the .displayName.
+@property(nonatomic,copy) NSString* userDefinedName;
+// This property is intended to be the display name of the projector.
+// It is derived from the other properties of the projector:
+// 1) If the .userDefinedName is set (i.e. -[NSString length] > 0), then
+//    .displayName returns the .userDefinedName.
+// 2) If .userDefinedName is not set, then if the .projectorName
+//    property is set, then .displayName returns
+//    "<.projectorName>@<host>" if .includeHostInDisplayName is YES, and just
+//    "<.projectorName>" if .includehostInDisplayName is NO.
+// 3) If .projectorName is not set, then .displayName returns
+//    "Projector@<host>" if .includeHostInDisplayName is YES, and just
+//    "Projector" if .includeHostInDisplayName is NO.
+@property(nonatomic,copy,readonly) NSString* displayName;
+@property(nonatomic,assign)        BOOL      includeHostInDisplayName;
 
 // KVO-compliant accessors for .inputs property
 - (NSUInteger)countOfInputs;

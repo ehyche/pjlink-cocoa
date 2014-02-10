@@ -63,6 +63,21 @@ extern NSString* const PJProjectorErrorKey;
 @property(nonatomic,copy,readonly) NSString* displayName;
 @property(nonatomic,assign)        BOOL      includeHostInDisplayName;
 
+// This property is used in between the time that requestInputChangeToInputIndex:
+// is called and the time the response comes back with a changed input
+// index. This property specifies the input index which is being transitioned *to*.
+// If there is no input being transitioned to, then this property will be -1.
+@property(nonatomic,assign,readonly) NSInteger pendingActiveInputIndex;
+
+// This property is saved from the call to refreshQueries:forReason:.
+// This allows the caller, when a connection state change or projection
+// change is encountered, to know how to response. For instance,
+// if the refresh reason is due to user interaction, then it may
+// be appropriate to show an error UIAlertView. However, if the
+// refresh was due to a timer, then the caller may want to handle
+// that error silently.
+@property(nonatomic,assign,readonly) PJRefreshReason lastRefreshReason;
+
 // KVO-compliant accessors for .inputs property
 - (NSUInteger)countOfInputs;
 - (id)objectInInputsAtIndex:(NSUInteger)index;
@@ -92,23 +107,23 @@ extern NSString* const PJProjectorErrorKey;
 - (id)initWithHost:(NSString*)host port:(NSInteger)port;
 
 // Refresh the specified queries
-- (void)refreshQueries:(NSArray*)queries;
+- (void)refreshQueries:(NSArray*)queries forReason:(PJRefreshReason)reason;
 // Refresh all queries
-- (void)refreshAllQueries;
+- (void)refreshAllQueriesForReason:(PJRefreshReason)reason;
 // Refresh the power status
-- (void)refreshPowerStatus;
+- (void)refreshPowerStatusForReason:(PJRefreshReason)reason;
 // Refresh the input status
-- (void)refreshInputStatus;
+- (void)refreshInputStatusForReason:(PJRefreshReason)reason;
 // Refresh the mute status
-- (void)refreshMuteStatus;
+- (void)refreshMuteStatusForReason:(PJRefreshReason)reason;
 // Refresh the status of the queries that
 // we can directly set (power, input, mute).
-- (void)refreshSettableQueries;
+- (void)refreshSettableQueriesForReason:(PJRefreshReason)reason;
 // For certain queries, we do not expect them to change very
 // often. For instance, we do not expect the product name or the manufacturer
 // name to change much, if ever. These queries can be refreshed
 // very infrequently.
-- (void)refreshQueriesWeExpectToChange;
+- (void)refreshQueriesWeExpectToChangeForReason:(PJRefreshReason)reason;
 
 // Turn the projector on or off. This method returns YES
 // if the we initiated a state change, and NO if we

@@ -336,7 +336,7 @@
         self.projector = [[PJProjector alloc] initWithHost:self.hostTextField.text port:port];
     }
     // Refresh all the values
-    [self.projector refreshAllQueries];
+    [self.projector refreshAllQueriesForReason:PJRefreshReasonUserInteraction];
 }
 
 - (void)switchValueChanged:(id)sender {

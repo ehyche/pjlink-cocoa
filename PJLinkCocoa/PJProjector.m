@@ -61,6 +61,7 @@ NSString* const kPJProjectorArchiveKeyPassword               = @"PJProjectorPass
 @property(nonatomic,copy,readwrite)                             NSArray*          lampStatus;
 @property(nonatomic,copy,readwrite)                             NSArray*          inputs;
 @property(nonatomic,assign,readwrite)                           NSUInteger        activeInputIndex;
+@property(nonatomic,assign,readwrite)                           NSInteger         pendingActiveInputIndex;
 @property(nonatomic,copy,readwrite)                             NSString*         projectorName;
 @property(nonatomic,copy,readwrite)                             NSString*         manufacturerName;
 @property(nonatomic,copy,readwrite)                             NSString*         productName;
@@ -69,6 +70,7 @@ NSString* const kPJProjectorArchiveKeyPassword               = @"PJProjectorPass
 @property(nonatomic,assign,readwrite)                           PJConnectionState connectionState;
 @property(nonatomic,copy,readwrite)                             NSString*         host;
 @property(nonatomic,assign,readwrite)                           NSInteger         port;
+@property(nonatomic,assign,readwrite)                           PJRefreshReason   lastRefreshReason;
 // Mutable array member variables for immutable properties
 @property(nonatomic,strong) NSMutableArray*  mutableInputs;
 @property(nonatomic,strong) NSMutableArray*  mutableLampStatus;
@@ -189,6 +191,9 @@ NSString* const kPJProjectorArchiveKeyPassword               = @"PJProjectorPass
         self.mutableOtherInformation = [NSMutableString string];
         // Create the AFPJLinkClient
         [self rebuildPJLinkClient];
+        // Init the pending active input index to -1, which
+        // means there is no pending input change
+        self.pendingActiveInputIndex = -1;
     }
 
     return self;
@@ -434,14 +439,16 @@ NSString* const kPJProjectorArchiveKeyPassword               = @"PJProjectorPass
     }
 }
 
-- (void)refreshQueries:(NSArray*)queries {
+- (void)refreshQueries:(NSArray*)queries  forReason:(PJRefreshReason)reason {
     if ([queries count] > 0) {
+        // Save the refresh reason
+        self.lastRefreshReason = reason;
         // Make the request and handle the responses.
         [self handleResponsesForCommandRequestBody:[PJRequestInfo queryStringForCommands:queries]];
     }
 }
 
-- (void)refreshAllQueries {
+- (void)refreshAllQueriesForReason:(PJRefreshReason)reason {
     // Note that we must always put PJCommandInput after PJCommandInputListQuery since
     // PJCommandInputListQuery populates the input list and PJCommandInput chooses from that list.
     [self refreshQueries:@[@(PJCommandPower),
@@ -454,28 +461,30 @@ NSString* const kPJProjectorArchiveKeyPassword               = @"PJProjectorPass
                            @(PJCommandManufacturerNameQuery),
                            @(PJCommandProductNameQuery),
                            @(PJCommandOtherInfoQuery),
-                           @(PJCommandClassInfoQuery)]];
+                           @(PJCommandClassInfoQuery)]
+               forReason:reason];
 }
 
-- (void)refreshPowerStatus {
-    [self refreshQueries:@[@(PJCommandPower)]];
+- (void)refreshPowerStatusForReason:(PJRefreshReason)reason {
+    [self refreshQueries:@[@(PJCommandPower)] forReason:reason];
 }
 
-- (void)refreshInputStatus {
-    [self refreshQueries:@[@(PJCommandInput)]];
+- (void)refreshInputStatusForReason:(PJRefreshReason)reason {
+    [self refreshQueries:@[@(PJCommandInput)] forReason:reason];
 }
 
-- (void)refreshMuteStatus {
-    [self refreshQueries:@[@(PJCommandAVMute)]];
+- (void)refreshMuteStatusForReason:(PJRefreshReason)reason {
+    [self refreshQueries:@[@(PJCommandAVMute)] forReason:reason];
 }
 
-- (void)refreshSettableQueries {
+- (void)refreshSettableQueriesForReason:(PJRefreshReason)reason {
     [self refreshQueries:@[@(PJCommandPower),
                            @(PJCommandInput),
-                           @(PJCommandAVMute)]];
+                           @(PJCommandAVMute)]
+               forReason:reason];
 }
 
-- (void)refreshQueriesWeExpectToChange {
+- (void)refreshQueriesWeExpectToChangeForReason:(PJRefreshReason)reason {
     // Note that we must always put PJCommandInput after PJCommandInputListQuery since
     // PJCommandInputListQuery populates the input list and PJCommandInput chooses from that list.
     [self refreshQueries:@[@(PJCommandPower),
@@ -483,7 +492,8 @@ NSString* const kPJProjectorArchiveKeyPassword               = @"PJProjectorPass
                            @(PJCommandInput),
                            @(PJCommandAVMute),
                            @(PJCommandErrorQuery),
-                           @(PJCommandLampQuery)]];
+                           @(PJCommandLampQuery)]
+               forReason:reason];
 }
 
 - (BOOL)requestPowerStateChange:(BOOL)powerOn {
@@ -530,6 +540,10 @@ NSString* const kPJProjectorArchiveKeyPassword               = @"PJProjectorPass
     NSUInteger inputIndex = [PJProjector indexOfInput:input inInputs:self.mutableInputs];
     // Is this input one of our valid inputs?
     if (inputIndex != NSNotFound) {
+        // Set the pending input index to this index
+        self.pendingActiveInputIndex = inputIndex;
+        // Issue the projector did change notification
+        [self postProjectorDidChangeNotification];
         // We will be making a request
         ret = YES;
         // Construct the command and issue the request
@@ -579,6 +593,9 @@ NSString* const kPJProjectorArchiveKeyPassword               = @"PJProjectorPass
     if (inputIndex != NSNotFound) {
         // Update the active input index
         self.activeInputIndex = inputIndex;
+        // If we previously set the pending active input index
+        // to a valid input index, then clear it back to -1.
+        self.pendingActiveInputIndex = -1;
     }
 }
 
@@ -733,11 +750,11 @@ NSString* const kPJProjectorArchiveKeyPassword               = @"PJProjectorPass
 }
 
 - (void)refreshTimerFired:(NSTimer*)timer {
-    [self refreshAllQueries];
+    [self refreshAllQueriesForReason:PJRefreshReasonTimed];
 }
 
 - (void)powerTransitionRefreshTimerFired:(NSTimer*)timer {
-    [self refreshPowerStatus];
+    [self refreshPowerStatusForReason:PJRefreshReasonTimed];
 }
 
 - (void)updatePowerTransitionRefreshTimerStatus {

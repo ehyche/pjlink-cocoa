@@ -77,5 +77,15 @@ typedef NS_ENUM(NSInteger, PJConnectionState)
     NumPJConnectionStates
 };
 
+typedef NS_ENUM(NSInteger, PJRefreshReason)
+{
+    PJRefreshReasonUnknown,
+    PJRefreshReasonTimed,
+    PJRefreshReasonAppStateChange,
+    PJRefreshReasonProjectorCreation,
+    PJRefreshReasonUserInteraction,
+    PJRefreshReasonCount
+};
+
 #define kDefaultPJLinkPort 4352
 

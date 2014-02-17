@@ -676,10 +676,14 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
     // Call CC_MD5 to do the hash
     unsigned char md5Result[CC_MD5_DIGEST_LENGTH];
     CC_MD5([randomPlusPasswordUTF8 bytes], [randomPlusPasswordUTF8 length], md5Result);
-    // Now copy the md5Result into an NSData
-    NSData* passwordData = [NSData dataWithBytes:md5Result length:CC_MD5_DIGEST_LENGTH];
-    // Create a string from this password data
-    NSString* hashedPassword = [[NSString alloc] initWithData:passwordData encoding:NSUTF8StringEncoding];
+    // Create a hex string from the MD5 data
+    NSMutableString* tmpStr = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH];
+    for (NSUInteger i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+        unsigned char ithChar = md5Result[i];
+        [tmpStr appendFormat:@"%02x", ithChar];
+    }
+    // Create the string to return
+    NSString* hashedPassword = [NSString stringWithString:tmpStr];
 
     return hashedPassword;
 }

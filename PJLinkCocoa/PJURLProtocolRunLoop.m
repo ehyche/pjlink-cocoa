@@ -233,10 +233,10 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
 }
 
 - (void)onSocket:(AsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port {
-    NSLog(@"PJURLProtocolRunLoop[%p]: onSocket:%@ didConnectToHost:%@ port:%u", self, sock, host, port);
+    NSLog(@"PJURLProtocolRunLoop[%p]: onSocket:%@ didConnectToHost:%@ port:%@", self, sock, host, @(port));
     // Read the initial challenge from the projector
-    NSLog(@"PJURLProtocolRunLoop[%p] calling readDataToData:withTimeout:%.1f tag:%d",
-          self, _timeout, kPJLinkTagReadProjectorChallenge);
+    NSLog(@"PJURLProtocolRunLoop[%p] calling readDataToData:withTimeout:%@ tag:%@",
+          self, @(_timeout), @(kPJLinkTagReadProjectorChallenge));
     [_socket readDataToData:[AsyncSocket CRData]
                 withTimeout:_timeout
                         tag:kPJLinkTagReadProjectorChallenge];
@@ -271,11 +271,11 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
 }
 
 - (void)onSocket:(AsyncSocket *)sock didWriteDataWithTag:(long)tag {
-    NSLog(@"PJURLProtocolRunLoop[%p]: onSocket:%@ didWriteDataWithTag:%ld", self, sock, tag);
+    NSLog(@"PJURLProtocolRunLoop[%p]: onSocket:%@ didWriteDataWithTag:%@", self, sock, @(tag));
     if (tag == kPJLinkTagWriteRequest) {
         // Read data up to and including the carriage return
-        NSLog(@"PJURLProtocolRunLoop[%p] calling readDataToData:withTimeout:%.1f tag:%d",
-              self, _timeout, kPJLinkTagReadCommandResponse);
+        NSLog(@"PJURLProtocolRunLoop[%p] calling readDataToData:withTimeout:%@ tag:%@",
+              self, @(_timeout), @(kPJLinkTagReadCommandResponse));
         [_socket readDataToData:[AsyncSocket CRData]
                     withTimeout:_timeout
                             tag:kPJLinkTagReadCommandResponse];
@@ -286,8 +286,8 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
   shouldTimeoutReadWithTag:(long)tag
                    elapsed:(NSTimeInterval)elapsed
                  bytesDone:(NSUInteger)length {
-    NSLog(@"PJURLProtocolRunLoop[%p]: onSocket:%@ shouldTimeoutReadWithTag:%ld elapsed:%.1f bytesDone:%u",
-          self, sock, tag, elapsed, length);
+    NSLog(@"PJURLProtocolRunLoop[%p]: onSocket:%@ shouldTimeoutReadWithTag:%@ elapsed:%@ bytesDone:%@",
+          self, sock, @(tag), @(elapsed), @(length));
     return 0.0;
 }
 
@@ -296,8 +296,8 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
                    elapsed:(NSTimeInterval)elapsed
                  bytesDone:(NSUInteger)length {
     
-    NSLog(@"PJURLProtocolRunLoop[%p]: onSocket:%@ shouldTimeoutWriteWithTag:%ld elapsed:%.1f bytesDone:%u",
-          self, sock, tag, elapsed, length);
+    NSLog(@"PJURLProtocolRunLoop[%p]: onSocket:%@ shouldTimeoutWriteWithTag:%@ elapsed:%@ bytesDone:%@",
+          self, sock, @(tag), @(elapsed), @(length));
     return 0.0;
 }
 
@@ -636,8 +636,8 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
         // Encode as UTF8
         NSData* nextRequestData = [nextRequest dataUsingEncoding:NSUTF8StringEncoding];
         // Write the request to the socket
-        NSLog(@"PJURLProtocolRunLoop[%p] calling writeData:withTimeout:%.1f tag:%d dataStr=\"%@\"",
-              self, _timeout, kPJLinkTagWriteRequest, nextRequest);
+        NSLog(@"PJURLProtocolRunLoop[%p] calling writeData:withTimeout:%@ tag:%@ dataStr=\"%@\"",
+              self, @(_timeout), @(kPJLinkTagWriteRequest), nextRequest);
         [_socket writeData:nextRequestData
                withTimeout:_timeout
                        tag:kPJLinkTagWriteRequest];
@@ -675,7 +675,7 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
     NSData* randomPlusPasswordUTF8 = [randomPlusPassword dataUsingEncoding:NSUTF8StringEncoding];
     // Call CC_MD5 to do the hash
     unsigned char md5Result[CC_MD5_DIGEST_LENGTH];
-    CC_MD5([randomPlusPasswordUTF8 bytes], [randomPlusPasswordUTF8 length], md5Result);
+    CC_MD5([randomPlusPasswordUTF8 bytes], (CC_LONG)[randomPlusPasswordUTF8 length], md5Result);
     // Create a hex string from the MD5 data
     NSMutableString* tmpStr = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH];
     for (NSUInteger i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
@@ -691,7 +691,10 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
 - (void)closeSocket {
     [_socket setDelegate:nil];
     [_socket disconnect];
-    _socket = nil;
+    // Don't release, as we may closeSocket in the didReadDataWithTag: callstack
+    // and the AsyncSocket still may want to call self after that. We can wait
+    // for ARC to release the socket after this object goes away.
+//    _socket = nil;
 }
 
 @end

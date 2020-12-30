@@ -76,6 +76,7 @@
 - (void)awakeFromNib {
     NSLog(@"awakeFromNib");
     [self commonInit];
+    [super awakeFromNib];
 }
 
 - (id)init {
@@ -96,7 +97,7 @@
     NSLog(@"commonInit");
     _hostTextField   = [[UITextField alloc] init];
     _portTextField   = [[UITextField alloc] init];
-    _powerSwitchSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    _powerSwitchSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
     _hostTextField.textAlignment = NSTextAlignmentRight;
     _portTextField.textAlignment = NSTextAlignmentRight;
     _hostTextField.delegate = self;
@@ -121,7 +122,7 @@
     _refreshBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
                                                                           target:self
                                                                           action:@selector(refreshButtonTapped:)];
-    _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
     _spinnerBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_spinner];
     self.navigationItem.rightBarButtonItem = self.refreshBarButtonItem;
     self.navigationItem.title = @"PJLinkCocoa";

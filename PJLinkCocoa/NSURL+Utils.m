@@ -22,8 +22,8 @@
     for (NSString* queryKey in queryParameters)
     {
         NSString* queryValue     = [queryParameters objectForKey:queryKey];
-        NSString* unescapedKey   = [queryKey stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        NSString* unescapedValue = [queryValue stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString* unescapedKey   = [queryKey stringByRemovingPercentEncoding];
+        NSString* unescapedValue = [queryValue stringByRemovingPercentEncoding];
         [tmp setObject:unescapedValue forKey:unescapedKey];
     }
 

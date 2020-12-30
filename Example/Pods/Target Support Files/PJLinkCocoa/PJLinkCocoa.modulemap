@@ -1,0 +1,6 @@
+framework module PJLinkCocoa {
+  umbrella header "PJLinkCocoa-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -8,26 +8,26 @@
 
 #import <Foundation/Foundation.h>
 
-NSString* const kPJLinkScheme;
-NSString* const kPJLinkPOWR;
-NSString* const kPJLinkINPT;
-NSString* const kPJLinkAVMT;
-NSString* const kPJLinkERST;
-NSString* const kPJLinkLAMP;
-NSString* const kPJLinkINST;
-NSString* const kPJLinkNAME;
-NSString* const kPJLinkINF1;
-NSString* const kPJLinkINF2;
-NSString* const kPJLinkINFO;
-NSString* const kPJLinkCLSS;
-NSString* const kPJLinkOK;
-NSString* const kPJLinkERR1;
-NSString* const kPJLinkERR2;
-NSString* const kPJLinkERR3;
-NSString* const kPJLinkERR4;
-NSString* const kPJLinkHeaderClass;
-NSString* const PJLinkErrorDomain;
-NSString* const kPJLinkCR;
+extern NSString* const kPJLinkScheme;
+extern NSString* const kPJLinkPOWR;
+extern NSString* const kPJLinkINPT;
+extern NSString* const kPJLinkAVMT;
+extern NSString* const kPJLinkERST;
+extern NSString* const kPJLinkLAMP;
+extern NSString* const kPJLinkINST;
+extern NSString* const kPJLinkNAME;
+extern NSString* const kPJLinkINF1;
+extern NSString* const kPJLinkINF2;
+extern NSString* const kPJLinkINFO;
+extern NSString* const kPJLinkCLSS;
+extern NSString* const kPJLinkOK;
+extern NSString* const kPJLinkERR1;
+extern NSString* const kPJLinkERR2;
+extern NSString* const kPJLinkERR3;
+extern NSString* const kPJLinkERR4;
+extern NSString* const kPJLinkHeaderClass;
+extern NSString* const PJLinkErrorDomain;
+extern NSString* const kPJLinkCR;
 
 enum {
     PJLinkErrorUnknown                  = -1,

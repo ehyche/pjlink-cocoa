@@ -120,7 +120,13 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
 
 + (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request {
     NSString* host       = [[request URL] host];
-    NSString* newURLStr  = [NSString stringWithFormat:@"%@://%@", kPJLinkScheme, host];
+    NSNumber* port       = [[request URL] port];
+    NSString* newURLStr  = @"";
+    if (port != nil) {
+        newURLStr  = [NSString stringWithFormat:@"%@://%@:%@", kPJLinkScheme, host, port];
+    } else {
+        newURLStr  = [NSString stringWithFormat:@"%@://%@", kPJLinkScheme, host];
+    }
     NSURL*    newURL     = [NSURL URLWithString:newURLStr];
     NSArray*  commands   = [PJURLProtocolRunLoop validPJLinkCommandsFromRequest:request];
     NSString* commandStr = [commands componentsJoinedByString:kPJLinkCR];
@@ -455,8 +461,8 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
                                                         MIMEType:@"text/plain"
                                            expectedContentLength:0
                                                 textEncodingName:nil];
-    NSLog(@"PJURLProtocolRunLoop[%p]: calling URLProtocol:didReceiveResponse:%@ cacheStoragePolicy:%u",
-          self, response, NSURLCacheStorageNotAllowed);
+    NSLog(@"PJURLProtocolRunLoop[%p]: calling URLProtocol:didReceiveResponse:%@ cacheStoragePolicy:%lu",
+          self, response, (unsigned long)NSURLCacheStorageNotAllowed);
     [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
 }
 
@@ -483,7 +489,7 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
     NSURLCredential* proposedCredential = nil;
     // Do we have a previously-supplied failed password?
     if ([_password length] > 0) {
-        proposedCredential = [NSURLCredential credentialWithUser:nil
+        proposedCredential = [NSURLCredential credentialWithUser:@""
                                                         password:_password
                                                      persistence:NSURLCredentialPersistencePermanent];
     }

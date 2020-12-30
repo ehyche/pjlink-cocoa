@@ -7,11 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		37CC4D0831FC4BBFA69D7736 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA86D9F9553149F18F63156F /* libPods.a */; };
-		FD078E0B1870B9BC000C8982 /* PJInputInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD078E041870B9BC000C8982 /* PJInputInfo.m */; };
-		FD078E0C1870B9BC000C8982 /* PJLampStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = FD078E061870B9BC000C8982 /* PJLampStatus.m */; };
-		FD078E0D1870B9BC000C8982 /* PJProjector.m in Sources */ = {isa = PBXBuildFile; fileRef = FD078E081870B9BC000C8982 /* PJProjector.m */; };
-		FD078E0E1870B9BC000C8982 /* PJRequestInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD078E0A1870B9BC000C8982 /* PJRequestInfo.m */; };
+		2AE192B06D64F1DF66CCDC3A /* Pods_PJLinkCocoaExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65029CE4B841B1356B442555 /* Pods_PJLinkCocoaExample.framework */; };
 		FD078E111870FE5C000C8982 /* PJTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD078E101870FE5C000C8982 /* PJTableViewController.m */; };
 		FD07EAE91788D50B0012AF4A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD07EAE81788D50B0012AF4A /* UIKit.framework */; };
 		FD07EAEB1788D50B0012AF4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD07EAEA1788D50B0012AF4A /* Foundation.framework */; };
@@ -24,23 +20,13 @@
 		FD07EAFF1788D50B0012AF4A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD07EAFE1788D50B0012AF4A /* Default-568h@2x.png */; };
 		FD07EB021788D50B0012AF4A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD07EB001788D50B0012AF4A /* MainStoryboard.storyboard */; };
 		FD07EB051788D50B0012AF4A /* PJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD07EB041788D50B0012AF4A /* PJViewController.m */; };
-		FD5E54741788F20500AE0849 /* AFPJLinkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5E54711788F20500AE0849 /* AFPJLinkClient.m */; };
-		FD5E54751788F20500AE0849 /* AFPJLinkRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5E54731788F20500AE0849 /* AFPJLinkRequestOperation.m */; };
-		FD5E547A1788F2B000AE0849 /* PJResponseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5E54771788F2B000AE0849 /* PJResponseInfo.m */; };
-		FD5E547B1788F2B000AE0849 /* PJURLProtocolRunLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5E54791788F2B000AE0849 /* PJURLProtocolRunLoop.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C566B886D8BA1C3209116EF /* Pods-PJLinkCocoaExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PJLinkCocoaExample.release.xcconfig"; path = "Target Support Files/Pods-PJLinkCocoaExample/Pods-PJLinkCocoaExample.release.xcconfig"; sourceTree = "<group>"; };
+		580E89FFD93EF70CD7547DBD /* Pods-PJLinkCocoaExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PJLinkCocoaExample.debug.xcconfig"; path = "Target Support Files/Pods-PJLinkCocoaExample/Pods-PJLinkCocoaExample.debug.xcconfig"; sourceTree = "<group>"; };
+		65029CE4B841B1356B442555 /* Pods_PJLinkCocoaExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PJLinkCocoaExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B01DB32E7AC421B93134383 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
-		CA86D9F9553149F18F63156F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		FD078E031870B9BC000C8982 /* PJInputInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PJInputInfo.h; path = ../PJLinkCocoa/PJInputInfo.h; sourceTree = "<group>"; };
-		FD078E041870B9BC000C8982 /* PJInputInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PJInputInfo.m; path = ../PJLinkCocoa/PJInputInfo.m; sourceTree = "<group>"; };
-		FD078E051870B9BC000C8982 /* PJLampStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PJLampStatus.h; path = ../PJLinkCocoa/PJLampStatus.h; sourceTree = "<group>"; };
-		FD078E061870B9BC000C8982 /* PJLampStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PJLampStatus.m; path = ../PJLinkCocoa/PJLampStatus.m; sourceTree = "<group>"; };
-		FD078E071870B9BC000C8982 /* PJProjector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PJProjector.h; path = ../PJLinkCocoa/PJProjector.h; sourceTree = "<group>"; };
-		FD078E081870B9BC000C8982 /* PJProjector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PJProjector.m; path = ../PJLinkCocoa/PJProjector.m; sourceTree = "<group>"; };
-		FD078E091870B9BC000C8982 /* PJRequestInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PJRequestInfo.h; path = ../PJLinkCocoa/PJRequestInfo.h; sourceTree = "<group>"; };
-		FD078E0A1870B9BC000C8982 /* PJRequestInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PJRequestInfo.m; path = ../PJLinkCocoa/PJRequestInfo.m; sourceTree = "<group>"; };
 		FD078E0F1870FE5C000C8982 /* PJTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJTableViewController.h; sourceTree = "<group>"; };
 		FD078E101870FE5C000C8982 /* PJTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJTableViewController.m; sourceTree = "<group>"; };
 		FD07EAE51788D50B0012AF4A /* PJLinkCocoaExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PJLinkCocoaExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,18 +42,9 @@
 		FD07EAFA1788D50B0012AF4A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		FD07EAFC1788D50B0012AF4A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		FD07EAFE1788D50B0012AF4A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		FD07EB011788D50B0012AF4A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		FD07EB031788D50B0012AF4A /* PJViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PJViewController.h; sourceTree = "<group>"; };
 		FD07EB041788D50B0012AF4A /* PJViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PJViewController.m; sourceTree = "<group>"; };
-		FD5E54701788F20500AE0849 /* AFPJLinkClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFPJLinkClient.h; path = ../PJLinkCocoa/AFPJLinkClient.h; sourceTree = "<group>"; };
-		FD5E54711788F20500AE0849 /* AFPJLinkClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFPJLinkClient.m; path = ../PJLinkCocoa/AFPJLinkClient.m; sourceTree = "<group>"; };
-		FD5E54721788F20500AE0849 /* AFPJLinkRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFPJLinkRequestOperation.h; path = ../PJLinkCocoa/AFPJLinkRequestOperation.h; sourceTree = "<group>"; };
-		FD5E54731788F20500AE0849 /* AFPJLinkRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFPJLinkRequestOperation.m; path = ../PJLinkCocoa/AFPJLinkRequestOperation.m; sourceTree = "<group>"; };
-		FD5E54761788F2B000AE0849 /* PJResponseInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PJResponseInfo.h; path = ../PJLinkCocoa/PJResponseInfo.h; sourceTree = "<group>"; };
-		FD5E54771788F2B000AE0849 /* PJResponseInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PJResponseInfo.m; path = ../PJLinkCocoa/PJResponseInfo.m; sourceTree = "<group>"; };
-		FD5E54781788F2B000AE0849 /* PJURLProtocolRunLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PJURLProtocolRunLoop.h; path = ../PJLinkCocoa/PJURLProtocolRunLoop.h; sourceTree = "<group>"; };
-		FD5E54791788F2B000AE0849 /* PJURLProtocolRunLoop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PJURLProtocolRunLoop.m; path = ../PJLinkCocoa/PJURLProtocolRunLoop.m; sourceTree = "<group>"; };
-		FD5E547C1788F32300AE0849 /* PJDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PJDefinitions.h; path = ../PJLinkCocoa/PJDefinitions.h; sourceTree = "<group>"; };
+		FDB7542C259BB75A00D9BD47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,21 +55,30 @@
 				FD07EAE91788D50B0012AF4A /* UIKit.framework in Frameworks */,
 				FD07EAEB1788D50B0012AF4A /* Foundation.framework in Frameworks */,
 				FD07EAED1788D50B0012AF4A /* CoreGraphics.framework in Frameworks */,
-				37CC4D0831FC4BBFA69D7736 /* libPods.a in Frameworks */,
+				2AE192B06D64F1DF66CCDC3A /* Pods_PJLinkCocoaExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C898C33F67BBE126D489F35E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				580E89FFD93EF70CD7547DBD /* Pods-PJLinkCocoaExample.debug.xcconfig */,
+				4C566B886D8BA1C3209116EF /* Pods-PJLinkCocoaExample.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FD07EADC1788D50B0012AF4A = {
 			isa = PBXGroup;
 			children = (
-				FD5E546F1788F1A400AE0849 /* PJLinkCocoa */,
 				FD07EAEE1788D50B0012AF4A /* PJLinkCocoaExample */,
 				FD07EAE71788D50B0012AF4A /* Frameworks */,
 				FD07EAE61788D50B0012AF4A /* Products */,
 				9B01DB32E7AC421B93134383 /* Pods.xcconfig */,
+				C898C33F67BBE126D489F35E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,7 +96,7 @@
 				FD07EAE81788D50B0012AF4A /* UIKit.framework */,
 				FD07EAEA1788D50B0012AF4A /* Foundation.framework */,
 				FD07EAEC1788D50B0012AF4A /* CoreGraphics.framework */,
-				CA86D9F9553149F18F63156F /* libPods.a */,
+				65029CE4B841B1356B442555 /* Pods_PJLinkCocoaExample.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -144,30 +130,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		FD5E546F1788F1A400AE0849 /* PJLinkCocoa */ = {
-			isa = PBXGroup;
-			children = (
-				FD078E031870B9BC000C8982 /* PJInputInfo.h */,
-				FD078E041870B9BC000C8982 /* PJInputInfo.m */,
-				FD078E051870B9BC000C8982 /* PJLampStatus.h */,
-				FD078E061870B9BC000C8982 /* PJLampStatus.m */,
-				FD078E071870B9BC000C8982 /* PJProjector.h */,
-				FD078E081870B9BC000C8982 /* PJProjector.m */,
-				FD078E091870B9BC000C8982 /* PJRequestInfo.h */,
-				FD078E0A1870B9BC000C8982 /* PJRequestInfo.m */,
-				FD5E547C1788F32300AE0849 /* PJDefinitions.h */,
-				FD5E54761788F2B000AE0849 /* PJResponseInfo.h */,
-				FD5E54771788F2B000AE0849 /* PJResponseInfo.m */,
-				FD5E54781788F2B000AE0849 /* PJURLProtocolRunLoop.h */,
-				FD5E54791788F2B000AE0849 /* PJURLProtocolRunLoop.m */,
-				FD5E54701788F20500AE0849 /* AFPJLinkClient.h */,
-				FD5E54711788F20500AE0849 /* AFPJLinkClient.m */,
-				FD5E54721788F20500AE0849 /* AFPJLinkRequestOperation.h */,
-				FD5E54731788F20500AE0849 /* AFPJLinkRequestOperation.m */,
-			);
-			name = PJLinkCocoa;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -175,11 +137,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FD07EB081788D50B0012AF4A /* Build configuration list for PBXNativeTarget "PJLinkCocoaExample" */;
 			buildPhases = (
+				F46CC847E95EB757E66DE543 /* [CP] Check Pods Manifest.lock */,
 				8D984DCF987A4A248BFFFF39 /* Check Pods Manifest.lock */,
 				FD07EAE11788D50B0012AF4A /* Sources */,
 				FD07EAE21788D50B0012AF4A /* Frameworks */,
 				FD07EAE31788D50B0012AF4A /* Resources */,
-				F14F57774E9C44D5ADB49C27 /* Copy Pods Resources */,
+				7E6B6748A46721242F6D78FD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -202,10 +165,11 @@
 			};
 			buildConfigurationList = FD07EAE01788D50B0012AF4A /* Build configuration list for PBXProject "PJLinkCocoaExample" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = FD07EADC1788D50B0012AF4A;
 			productRefGroup = FD07EAE61788D50B0012AF4A /* Products */;
@@ -233,6 +197,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		7E6B6748A46721242F6D78FD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PJLinkCocoaExample/Pods-PJLinkCocoaExample-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/PJLinkCocoa/PJLinkCocoa.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PJLinkCocoa.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PJLinkCocoaExample/Pods-PJLinkCocoaExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8D984DCF987A4A248BFFFF39 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -247,19 +233,27 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 		};
-		F14F57774E9C44D5ADB49C27 /* Copy Pods Resources */ = {
+		F46CC847E95EB757E66DE543 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
+			inputFileListPaths = (
 			);
-			name = "Copy Pods Resources";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PJLinkCocoaExample-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -270,15 +264,7 @@
 			files = (
 				FD07EAF51788D50B0012AF4A /* main.m in Sources */,
 				FD07EAF91788D50B0012AF4A /* PJAppDelegate.m in Sources */,
-				FD078E0D1870B9BC000C8982 /* PJProjector.m in Sources */,
 				FD07EB051788D50B0012AF4A /* PJViewController.m in Sources */,
-				FD078E0C1870B9BC000C8982 /* PJLampStatus.m in Sources */,
-				FD5E54741788F20500AE0849 /* AFPJLinkClient.m in Sources */,
-				FD5E54751788F20500AE0849 /* AFPJLinkRequestOperation.m in Sources */,
-				FD5E547A1788F2B000AE0849 /* PJResponseInfo.m in Sources */,
-				FD078E0E1870B9BC000C8982 /* PJRequestInfo.m in Sources */,
-				FD078E0B1870B9BC000C8982 /* PJInputInfo.m in Sources */,
-				FD5E547B1788F2B000AE0849 /* PJURLProtocolRunLoop.m in Sources */,
 				FD078E111870FE5C000C8982 /* PJTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,7 +283,7 @@
 		FD07EB001788D50B0012AF4A /* MainStoryboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FD07EB011788D50B0012AF4A /* en */,
+				FDB7542C259BB75A00D9BD47 /* Base */,
 			);
 			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
@@ -330,7 +316,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -354,7 +340,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -363,7 +349,7 @@
 		};
 		FD07EB091788D50B0012AF4A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9B01DB32E7AC421B93134383 /* Pods.xcconfig */;
+			baseConfigurationReference = 580E89FFD93EF70CD7547DBD /* Pods-PJLinkCocoaExample.debug.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PJLinkCocoaExample/PJLinkCocoaExample-Prefix.pch";
@@ -375,7 +361,7 @@
 		};
 		FD07EB0A1788D50B0012AF4A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9B01DB32E7AC421B93134383 /* Pods.xcconfig */;
+			baseConfigurationReference = 4C566B886D8BA1C3209116EF /* Pods-PJLinkCocoaExample.release.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PJLinkCocoaExample/PJLinkCocoaExample-Prefix.pch";

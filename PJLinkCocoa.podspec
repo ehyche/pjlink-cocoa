@@ -8,8 +8,8 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/ehyche/pjlink-cocoa.git", :tag => '0.9.7' }
   s.source_files = 'PJLinkCocoa'
   s.requires_arc = true
-  s.platform     = :ios, '5.0'
-  s.frameworks   = 'MobileCoreServices', 'SystemConfiguration', 'Security'
+  s.platform     = :ios, '14.3'
+  s.frameworks   = 'CoreServices', 'SystemConfiguration', 'Security'
   s.dependency 'AFNetworking', '~> 1.3.0'
-  s.dependency 'CocoaAsyncSocket', '~> 7.0'
+  s.dependency 'CocoaAsyncSocket/RunLoop', '7.5.1'
 end

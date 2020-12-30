@@ -69,7 +69,7 @@ static NSDictionary* gFourCharacterCodeToCommandEnum = nil;
         [tmp appendString:password];
     }
     // Add the % and the class
-    [tmp appendFormat:@"%%%d", self.pjlinkClass];
+    [tmp appendFormat:@"%%%ld", (long)self.pjlinkClass];
     // Get the 4cc
     NSString* commandStr = [PJRequestInfo pjlink4ccForCommand:self.command];
     if ([commandStr length] > 0)
@@ -226,7 +226,7 @@ static NSDictionary* gFourCharacterCodeToCommandEnum = nil;
 
 -(NSString*) stringForSetData
 {
-    return [NSString stringWithFormat:@"%u%u", self.inputType, self.inputNumber];
+    return [NSString stringWithFormat:@"%ld%u", (long)self.inputType, self.inputNumber];
 }
 
 -(void) parseURLQueryValue:(NSString*) queryValue
@@ -271,7 +271,7 @@ static NSDictionary* gFourCharacterCodeToCommandEnum = nil;
 
 -(NSString*) stringForSetData
 {
-    return [NSString stringWithFormat:@"%u%u", self.muteType, self.muteOn];
+    return [NSString stringWithFormat:@"%ld%u", (long)self.muteType, self.muteOn];
 }
 
 -(void) parseURLQueryValue:(NSString*) queryValue

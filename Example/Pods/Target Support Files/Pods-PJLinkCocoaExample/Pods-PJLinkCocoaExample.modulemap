@@ -1,0 +1,6 @@
+framework module Pods_PJLinkCocoaExample {
+  umbrella header "Pods-PJLinkCocoaExample-umbrella.h"
+
+  export *
+  module * { export * }
+}

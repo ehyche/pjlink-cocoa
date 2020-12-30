@@ -1,0 +1,27 @@
+PODS:
+  - AFNetworking (1.3.4)
+  - CocoaAsyncSocket/RunLoop (7.5.1)
+  - PJLinkCocoa (0.9.7):
+    - AFNetworking (~> 1.3.0)
+    - CocoaAsyncSocket/RunLoop (= 7.5.1)
+
+DEPENDENCIES:
+  - PJLinkCocoa (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - AFNetworking
+    - CocoaAsyncSocket
+
+EXTERNAL SOURCES:
+  PJLinkCocoa:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
+  CocoaAsyncSocket: e0a7e93b2ffa411592ff87e58524fbbc9b95b4fa
+  PJLinkCocoa: aa51d965dc76e37270b3a258cb04d681d71762a2
+
+PODFILE CHECKSUM: ff1d3ae885cfa4bbd556b807ff04d26ddff55f9f
+
+COCOAPODS: 1.10.0

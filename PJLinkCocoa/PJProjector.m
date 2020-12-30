@@ -547,7 +547,7 @@ NSString* const kPJProjectorArchiveKeyPassword               = @"PJProjectorPass
         // We will be making a request
         ret = YES;
         // Construct the command and issue the request
-        NSString* commandBody = [NSString stringWithFormat:@"INPT %u%u\rINPT ?\r", input.inputType, input.inputNumber];
+        NSString* commandBody = [NSString stringWithFormat:@"INPT %ld%lu\rINPT ?\r", (long)input.inputType, (unsigned long)input.inputNumber];
         [self handleResponsesForCommandRequestBody:commandBody];
     }
 
@@ -668,7 +668,7 @@ NSString* const kPJProjectorArchiveKeyPassword               = @"PJProjectorPass
 }
 
 - (void)rebuildPJLinkClient {
-    NSString* pjlinkURLStr = [NSString stringWithFormat:@"pjlink://%@:%d/", self.host, self.port];
+    NSString* pjlinkURLStr = [NSString stringWithFormat:@"pjlink://%@:%ld/", self.host, (long)self.port];
     NSURL*    pjlinkURL    = [NSURL URLWithString:pjlinkURLStr];
     [self.pjlinkClient.operationQueue cancelAllOperations];
     self.pjlinkClient = [[AFPJLinkClient alloc] initWithBaseURL:pjlinkURL];

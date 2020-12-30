@@ -111,7 +111,7 @@ NSString* const kPJInputInfoArchiveKeyInputNumber = @"PJInputInfoInputNumber";
 }
 
 - (NSString*)description {
-    return [NSString stringWithFormat:@"%@ %u", [PJInputInfo nameForInputType:self.inputType], self.inputNumber];
+    return [NSString stringWithFormat:@"%@ %lu", [PJInputInfo nameForInputType:self.inputType], (unsigned long)self.inputNumber];
 }
 
 @end

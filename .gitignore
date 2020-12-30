@@ -1,0 +1,14 @@
+*.DS_Store
+*.iml
+*.pyc
+*.swp
+*.xcuser
+*.xcuserstate
+.DS_Store
+.gradle
+.idea/
+.metadata
+.project
+.pydevproject
+.vagrant
+xcuserdata/

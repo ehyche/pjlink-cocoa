@@ -73,12 +73,6 @@
     [self unsubscribeFromNotifications];
 }
 
-- (void)awakeFromNib {
-    NSLog(@"awakeFromNib");
-    [self commonInit];
-    [super awakeFromNib];
-}
-
 - (id)init {
     return [self initWithStyle:UITableViewStyleGrouped];
 }

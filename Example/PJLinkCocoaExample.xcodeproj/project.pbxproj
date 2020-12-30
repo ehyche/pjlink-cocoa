@@ -18,8 +18,8 @@
 		FD07EAFB1788D50B0012AF4A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FD07EAFA1788D50B0012AF4A /* Default.png */; };
 		FD07EAFD1788D50B0012AF4A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD07EAFC1788D50B0012AF4A /* Default@2x.png */; };
 		FD07EAFF1788D50B0012AF4A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD07EAFE1788D50B0012AF4A /* Default-568h@2x.png */; };
-		FD07EB021788D50B0012AF4A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD07EB001788D50B0012AF4A /* MainStoryboard.storyboard */; };
 		FD07EB051788D50B0012AF4A /* PJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD07EB041788D50B0012AF4A /* PJViewController.m */; };
+		FD3F6EBE259C19560057FF39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3F6EBD259C19560057FF39 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +44,8 @@
 		FD07EAFE1788D50B0012AF4A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		FD07EB031788D50B0012AF4A /* PJViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PJViewController.h; sourceTree = "<group>"; };
 		FD07EB041788D50B0012AF4A /* PJViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PJViewController.m; sourceTree = "<group>"; };
-		FDB7542C259BB75A00D9BD47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		FD3F6EBC259C19560057FF39 /* PJLinkCocoaExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PJLinkCocoaExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		FD3F6EBD259C19560057FF39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,12 +107,13 @@
 			children = (
 				FD07EAF71788D50B0012AF4A /* PJAppDelegate.h */,
 				FD07EAF81788D50B0012AF4A /* PJAppDelegate.m */,
-				FD07EB001788D50B0012AF4A /* MainStoryboard.storyboard */,
 				FD07EB031788D50B0012AF4A /* PJViewController.h */,
 				FD07EB041788D50B0012AF4A /* PJViewController.m */,
 				FD078E0F1870FE5C000C8982 /* PJTableViewController.h */,
 				FD078E101870FE5C000C8982 /* PJTableViewController.m */,
 				FD07EAEF1788D50B0012AF4A /* Supporting Files */,
+				FD3F6EBD259C19560057FF39 /* SceneDelegate.swift */,
+				FD3F6EBC259C19560057FF39 /* PJLinkCocoaExample-Bridging-Header.h */,
 			);
 			path = PJLinkCocoaExample;
 			sourceTree = "<group>";
@@ -162,6 +164,11 @@
 				CLASSPREFIX = PJ;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Eric Hyche";
+				TargetAttributes = {
+					FD07EAE41788D50B0012AF4A = {
+						LastSwiftMigration = 1230;
+					};
+				};
 			};
 			buildConfigurationList = FD07EAE01788D50B0012AF4A /* Build configuration list for PBXProject "PJLinkCocoaExample" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -190,7 +197,6 @@
 				FD07EAFB1788D50B0012AF4A /* Default.png in Resources */,
 				FD07EAFD1788D50B0012AF4A /* Default@2x.png in Resources */,
 				FD07EAFF1788D50B0012AF4A /* Default-568h@2x.png in Resources */,
-				FD07EB021788D50B0012AF4A /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD3F6EBE259C19560057FF39 /* SceneDelegate.swift in Sources */,
 				FD07EAF51788D50B0012AF4A /* main.m in Sources */,
 				FD07EAF91788D50B0012AF4A /* PJAppDelegate.m in Sources */,
 				FD07EB051788D50B0012AF4A /* PJViewController.m in Sources */,
@@ -278,14 +285,6 @@
 				FD07EAF21788D50B0012AF4A /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		FD07EB001788D50B0012AF4A /* MainStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FDB7542C259BB75A00D9BD47 /* Base */,
-			);
-			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -351,10 +350,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 580E89FFD93EF70CD7547DBD /* Pods-PJLinkCocoaExample.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PJLinkCocoaExample/PJLinkCocoaExample-Prefix.pch";
 				INFOPLIST_FILE = "PJLinkCocoaExample/PJLinkCocoaExample-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PJLinkCocoaExample/PJLinkCocoaExample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -363,10 +367,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4C566B886D8BA1C3209116EF /* Pods-PJLinkCocoaExample.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PJLinkCocoaExample/PJLinkCocoaExample-Prefix.pch";
 				INFOPLIST_FILE = "PJLinkCocoaExample/PJLinkCocoaExample-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PJLinkCocoaExample/PJLinkCocoaExample-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

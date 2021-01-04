@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Eric Hyche. All rights reserved.
 //
 
-#import "AFURLConnectionOperation.h"
+#import <AFNetworking/AFNetworking.h>
 
 @class AFPJLinkRequestOperation;
 

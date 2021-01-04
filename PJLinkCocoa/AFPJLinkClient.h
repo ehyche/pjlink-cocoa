@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AFHTTPClient.h"
+#import <AFNetworking/AFNetworking.h>
 #import "AFPJLinkRequestOperation.h"
 
 @class AFPJLinkRequestOperation;

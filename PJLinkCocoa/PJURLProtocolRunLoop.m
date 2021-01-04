@@ -7,7 +7,7 @@
 //
 
 #import "PJURLProtocolRunLoop.h"
-#import "AsyncSocket.h"
+#import <CocoaAsyncSocket/AsyncSocket.h>
 #import <CommonCrypto/CommonDigest.h>
 
 NSString* const kPJLinkScheme      = @"pjlink";
@@ -42,6 +42,9 @@ NSString* const kPJLinkAuthError       = @"PJLINK ERRA\r";
 const NSInteger kPJLinkTagWriteRequest           = 10;
 const NSInteger kPJLinkTagReadProjectorChallenge = 20;
 const NSInteger kPJLinkTagReadCommandResponse    = 21;
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
 @interface PJURLProtocolRunLoop() <AsyncSocketDelegate, NSURLAuthenticationChallengeSender>
 {
@@ -704,3 +707,6 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
 }
 
 @end
+
+#pragma GCC diagnostic pop
+

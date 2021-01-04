@@ -18,7 +18,6 @@
 		FD07EAFB1788D50B0012AF4A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FD07EAFA1788D50B0012AF4A /* Default.png */; };
 		FD07EAFD1788D50B0012AF4A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD07EAFC1788D50B0012AF4A /* Default@2x.png */; };
 		FD07EAFF1788D50B0012AF4A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD07EAFE1788D50B0012AF4A /* Default-568h@2x.png */; };
-		FD07EB051788D50B0012AF4A /* PJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD07EB041788D50B0012AF4A /* PJViewController.m */; };
 		FD3F6EBE259C19560057FF39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3F6EBD259C19560057FF39 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,8 +41,6 @@
 		FD07EAFA1788D50B0012AF4A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		FD07EAFC1788D50B0012AF4A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		FD07EAFE1788D50B0012AF4A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		FD07EB031788D50B0012AF4A /* PJViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PJViewController.h; sourceTree = "<group>"; };
-		FD07EB041788D50B0012AF4A /* PJViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PJViewController.m; sourceTree = "<group>"; };
 		FD3F6EBC259C19560057FF39 /* PJLinkCocoaExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PJLinkCocoaExample-Bridging-Header.h"; sourceTree = "<group>"; };
 		FD3F6EBD259C19560057FF39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,8 +104,6 @@
 			children = (
 				FD07EAF71788D50B0012AF4A /* PJAppDelegate.h */,
 				FD07EAF81788D50B0012AF4A /* PJAppDelegate.m */,
-				FD07EB031788D50B0012AF4A /* PJViewController.h */,
-				FD07EB041788D50B0012AF4A /* PJViewController.m */,
 				FD078E0F1870FE5C000C8982 /* PJTableViewController.h */,
 				FD078E101870FE5C000C8982 /* PJTableViewController.m */,
 				FD07EAEF1788D50B0012AF4A /* Supporting Files */,
@@ -271,7 +266,6 @@
 				FD3F6EBE259C19560057FF39 /* SceneDelegate.swift in Sources */,
 				FD07EAF51788D50B0012AF4A /* main.m in Sources */,
 				FD07EAF91788D50B0012AF4A /* PJAppDelegate.m in Sources */,
-				FD07EB051788D50B0012AF4A /* PJViewController.m in Sources */,
 				FD078E111870FE5C000C8982 /* PJTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

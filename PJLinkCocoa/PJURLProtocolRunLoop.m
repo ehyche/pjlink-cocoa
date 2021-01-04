@@ -7,7 +7,7 @@
 //
 
 #import "PJURLProtocolRunLoop.h"
-#import <CocoaAsyncSocket/AsyncSocket.h>
+#import <CocoaAsyncSocket/GCDAsyncSocket.h>
 #import <CommonCrypto/CommonDigest.h>
 
 NSString* const kPJLinkScheme      = @"pjlink";
@@ -46,19 +46,20 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
-@interface PJURLProtocolRunLoop() <AsyncSocketDelegate, NSURLAuthenticationChallengeSender>
+@interface PJURLProtocolRunLoop() <GCDAsyncSocketDelegate, NSURLAuthenticationChallengeSender>
 {
-    AsyncSocket*    _socket;
-    NSError*        _error;
-    NSMutableArray* _requests;
-    NSTimeInterval  _timeout;
-    BOOL            _usesAuthentication;
-    NSString*       _randomSequence;
-    NSString*       _password;
-    NSInteger       _failureCount;
-    NSString*       _hashedPassword;
-    NSUInteger      _bytesSent;
-    BOOL            _stopLoadingCalled;
+    GCDAsyncSocket*  _socket;
+    dispatch_queue_t _delegateQueue;
+    NSError*         _error;
+    NSMutableArray*  _requests;
+    NSTimeInterval   _timeout;
+    BOOL             _usesAuthentication;
+    NSString*        _randomSequence;
+    NSString*        _password;
+    NSInteger        _failureCount;
+    NSString*        _hashedPassword;
+    NSUInteger       _bytesSent;
+    BOOL             _stopLoadingCalled;
 }
 
 + (NSArray*)validPJLinkCommandsFromRequest:(NSURLRequest*)request;
@@ -93,6 +94,7 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
     self = [super initWithRequest:request cachedResponse:cachedResponse client:client];
     if (self) {
         _timeout = [request timeoutInterval];
+        _delegateQueue = dispatch_queue_create("PJLinkDelegateQueue", NULL);
     }
 
     NSLog(@"PJURLProtocolRunLoop[%p] initWithRequest:%@ cachedResponse:%@ client:%@", self, request, cachedResponse, client);
@@ -181,7 +183,7 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
         // Get the port number
         uint16_t port16 = [portNum unsignedShortValue];
         // Create the socket
-        _socket = [[AsyncSocket alloc] initWithDelegate:self];
+        _socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:_delegateQueue];
         // Connect to the host
         NSLog(@"PJURLProtocolRunLoop[%p] calling socket connectToHost:%@ onPort:%u withTimeout:%.1f error:",
               self, host, port16, _timeout);
@@ -229,31 +231,21 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
 }
 
 #pragma mark -
-#pragma mark AsyncSocketDelegate methods
+#pragma mark GCDAsyncSocketDelegate methods
 
-- (void)onSocket:(AsyncSocket *)sock willDisconnectWithError:(NSError *)err {
-    NSLog(@"PJURLProtocolRunLoop[%p]: onSocket:%@ willDisconnectWithError:%@", self, sock, err);
-    _error = err;
-}
-
-- (void)onSocketDidDisconnect:(AsyncSocket *)sock {
-    NSLog(@"PJURLProtocolRunLoop[%p]: onSocketDidDisconnect:%@", self, sock);
-    [[self client] URLProtocol:self didFailWithError:_error];
-}
-
-- (void)onSocket:(AsyncSocket *)sock didConnectToHost:(NSString *)host port:(UInt16)port {
-    NSLog(@"PJURLProtocolRunLoop[%p]: onSocket:%@ didConnectToHost:%@ port:%@", self, sock, host, @(port));
+- (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port {
+    NSLog(@"PJURLProtocolRunLoop[%p]: socket:%@ didConnectToHost:%@ port:%@", self, sock, host, @(port));
     // Read the initial challenge from the projector
     NSLog(@"PJURLProtocolRunLoop[%p] calling readDataToData:withTimeout:%@ tag:%@",
           self, @(_timeout), @(kPJLinkTagReadProjectorChallenge));
-    [_socket readDataToData:[AsyncSocket CRData]
+    [_socket readDataToData:[GCDAsyncSocket CRData]
                 withTimeout:_timeout
                         tag:kPJLinkTagReadProjectorChallenge];
 }
 
-- (void)onSocket:(AsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
+- (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
     NSString* dataStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"PJURLProtocolRunLoop[%p]: onSocket:%@ didReadData:\"%@\" withTag:%ld", self, sock, dataStr, tag);
+    NSLog(@"PJURLProtocolRunLoop[%p]: socket:%@ didReadData:\"%@\" withTag:%ld", self, sock, dataStr, tag);
     // Switch on tag
     BOOL     handled = YES;
     NSError* error   = nil;
@@ -279,35 +271,39 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
     }
 }
 
-- (void)onSocket:(AsyncSocket *)sock didWriteDataWithTag:(long)tag {
-    NSLog(@"PJURLProtocolRunLoop[%p]: onSocket:%@ didWriteDataWithTag:%@", self, sock, @(tag));
+- (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
+    NSLog(@"PJURLProtocolRunLoop[%p]: socket:%@ didWriteDataWithTag:%@", self, sock, @(tag));
     if (tag == kPJLinkTagWriteRequest) {
         // Read data up to and including the carriage return
         NSLog(@"PJURLProtocolRunLoop[%p] calling readDataToData:withTimeout:%@ tag:%@",
               self, @(_timeout), @(kPJLinkTagReadCommandResponse));
-        [_socket readDataToData:[AsyncSocket CRData]
+        [_socket readDataToData:[GCDAsyncSocket CRData]
                     withTimeout:_timeout
                             tag:kPJLinkTagReadCommandResponse];
     }
 }
 
-- (NSTimeInterval)onSocket:(AsyncSocket *)sock
-  shouldTimeoutReadWithTag:(long)tag
-                   elapsed:(NSTimeInterval)elapsed
-                 bytesDone:(NSUInteger)length {
-    NSLog(@"PJURLProtocolRunLoop[%p]: onSocket:%@ shouldTimeoutReadWithTag:%@ elapsed:%@ bytesDone:%@",
+- (NSTimeInterval)    socket:(GCDAsyncSocket *)sock
+    shouldTimeoutReadWithTag:(long)tag
+                     elapsed:(NSTimeInterval)elapsed
+                   bytesDone:(NSUInteger)length {
+    NSLog(@"PJURLProtocolRunLoop[%p]: socket:%@ shouldTimeoutReadWithTag:%@ elapsed:%@ bytesDone:%@",
           self, sock, @(tag), @(elapsed), @(length));
     return 0.0;
 }
 
-- (NSTimeInterval)onSocket:(AsyncSocket *)sock
- shouldTimeoutWriteWithTag:(long)tag
-                   elapsed:(NSTimeInterval)elapsed
-                 bytesDone:(NSUInteger)length {
-    
+- (NSTimeInterval)     socket:(GCDAsyncSocket *)sock
+    shouldTimeoutWriteWithTag:(long)tag
+                      elapsed:(NSTimeInterval)elapsed
+                    bytesDone:(NSUInteger)length {
     NSLog(@"PJURLProtocolRunLoop[%p]: onSocket:%@ shouldTimeoutWriteWithTag:%@ elapsed:%@ bytesDone:%@",
           self, sock, @(tag), @(elapsed), @(length));
     return 0.0;
+}
+
+- (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(nullable NSError *)err {
+    NSLog(@"PJURLProtocolRunLoop[%p]: socketDidDisconnect:%@ withError:%@", self, sock, err);
+    [[self client] URLProtocol:self didFailWithError:err];
 }
 
 #pragma mark -

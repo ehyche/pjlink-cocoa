@@ -10,6 +10,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.platform     = :ios, '14.3'
   s.frameworks   = 'CoreServices', 'SystemConfiguration', 'Security'
-  s.dependency 'AFNetworking', '~> 1.3.0'
-  s.dependency 'CocoaAsyncSocket/RunLoop', '7.5.1'
+  s.dependency 'AFNetworking', '1.3.4'
+  s.dependency 'CocoaAsyncSocket', '7.6.5'
 end

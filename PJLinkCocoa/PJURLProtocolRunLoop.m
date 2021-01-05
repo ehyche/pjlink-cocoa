@@ -65,6 +65,7 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
 + (NSArray*)validPJLinkCommandsFromRequest:(NSURLRequest*)request;
 + (BOOL)isValidPJLinkRequest:(NSString*) reqStr;
 + (NSMutableArray*)pjlinkRequestsFromRequest:(NSURLRequest*)request;
+- (void)callClientDidFailOnDelegateQueueWithError:(NSError *)error;
 - (void)callClientDidFailWithError:(NSError*) error;
 - (void)callClientDidReceiveResponse;
 - (void)callClientDidLoadData:(NSData*) data;
@@ -76,6 +77,7 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
 - (void)finishDueToNoPassword;
 + (NSString*)hashedPasswordFromRandomSequence:(NSString*) sequence password:(NSString*) password;
 - (void)closeSocket;
+- (void)closeSocketSyncOnDelegateQueue;
 
 @end
 
@@ -195,21 +197,21 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
         if (!connectRet)
         {
             // Call back to the client
-            [self callClientDidFailWithError:connectError];
+            [self callClientDidFailOnDelegateQueueWithError:connectError];
         }
     } else {
         // We had no valid requests, so create a "bad request" error
         NSError* error = [NSError errorWithDomain:PJLinkErrorDomain
                                              code:PJLinkErrorNoValidCommandsInRequest
                                          userInfo:@{NSLocalizedDescriptionKey: @"No valid PJlink requests found."}];
-        [self callClientDidFailWithError:error];
+        [self callClientDidFailOnDelegateQueueWithError:error];
     }
 }
 
 - (void)stopLoading {
     NSLog(@"PJURLProtocolRunLoop[%p]: stopLoading", self);
     // Close the socket
-    [self closeSocket];
+    [self closeSocketSyncOnDelegateQueue];
     // We do not call back to the client after this, as the
     // documentation says that after we receive a stopLoading,
     // we should make no further calls to the NSURLProtocolClient.
@@ -303,13 +305,34 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
 
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(nullable NSError *)err {
     NSLog(@"PJURLProtocolRunLoop[%p]: socketDidDisconnect:%@ withError:%@", self, sock, err);
-    [[self client] URLProtocol:self didFailWithError:err];
+    [self callClientDidFailWithError:err];
 }
 
 #pragma mark -
 #pragma mark NSURLAuthenticationChallengeSender methods
 
 - (void)useCredential:(NSURLCredential *)credential forAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+    __weak PJURLProtocolRunLoop* weakSelf = self;
+    dispatch_async(_delegateQueue, ^{
+        [weakSelf handleAuthCredential:credential];
+    });
+}
+
+- (void)continueWithoutCredentialForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+    __weak PJURLProtocolRunLoop* weakSelf = self;
+    dispatch_async(_delegateQueue, ^{
+        [weakSelf finishDueToNoPassword];
+    });
+}
+
+- (void)cancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+    __weak PJURLProtocolRunLoop* weakSelf = self;
+    dispatch_async(_delegateQueue, ^{
+        [weakSelf finishDueToNoPassword];
+    });
+}
+
+- (void)handleAuthCredential:(NSURLCredential *)credential {
     // We better have a password
     if ([credential hasPassword]) {
         // Get the password
@@ -321,14 +344,6 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
     } else {
         [self finishDueToNoPassword];
     }
-}
-
-- (void)continueWithoutCredentialForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    [self finishDueToNoPassword];
-}
-
-- (void)cancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    [self finishDueToNoPassword];
 }
 
 #pragma mark -
@@ -447,6 +462,13 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
     }
 
     return tmp;
+}
+
+- (void)callClientDidFailOnDelegateQueueWithError:(NSError *)error {
+    __weak PJURLProtocolRunLoop* weakSelf = self;
+    dispatch_async(_delegateQueue, ^{
+        [weakSelf callClientDidFailWithError:error];
+    });
 }
 
 - (void)callClientDidFailWithError:(NSError*) error {
@@ -700,6 +722,13 @@ const NSInteger kPJLinkTagReadCommandResponse    = 21;
     // and the AsyncSocket still may want to call self after that. We can wait
     // for ARC to release the socket after this object goes away.
 //    _socket = nil;
+}
+
+- (void)closeSocketSyncOnDelegateQueue {
+    __weak PJURLProtocolRunLoop* weakSelf = self;
+    dispatch_sync(_delegateQueue, ^{
+        [weakSelf closeSocket];
+    });
 }
 
 @end

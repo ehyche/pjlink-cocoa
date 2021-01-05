@@ -7,76 +7,84 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0429716A3500122E34D870A0AE734665 /* NSString+Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = BDF669D6FE8B3D75BD3FF76176C4D1C4 /* NSString+Utils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		06796430A36B3C98EB25B396941120F6 /* PJLinkCocoa-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5579042C5CE5312E6325EC12ABF54897 /* PJLinkCocoa-dummy.m */; };
 		086726B4D772ED23986CFB7252BF2A55 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 988B4BF184D1263F1C7A12ED90820261 /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		0C6ADF95F59E17ADB753C21A1662DDAE /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42DF4CB1EC27FAF9C21A53DAA5CB152E /* AFNetworking.framework */; };
 		0E7D5AE814B49121B41ACF3E6742DA2D /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = DC915A0EADCE9D30CAD94A3295A96B7A /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		0FBCAA4484BE31D7DEB2FA2158DDB69B /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42DF4CB1EC27FAF9C21A53DAA5CB152E /* AFNetworking.framework */; };
-		115F0C18F4D523B168BB4B129D8D802E /* PJLinkCocoa-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 11045862181C4C02B5F6EF1C34EDF293 /* PJLinkCocoa-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		14ED4FF01D1A53448178B24948E7B9E7 /* AFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = B8A4943309DF0F6BEF235431F94EEF57 /* AFHTTPClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		178F5C4758CB949ADA6B1B74EF8BF4A4 /* PJURLProtocolRunLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A1A94E842BC94F244BD47F3891A09 /* PJURLProtocolRunLoop.m */; };
 		19125FFED6290E5732C552A098C20D39 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C497C509E1DAD853D26BFE070C867D50 /* CFNetwork.framework */; };
 		1C7C608091334B29AA1F96D400B24326 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A475B28D252756C2736475719A15C6 /* GCDAsyncSocket.m */; };
-		201CF0ADD89C0FF791859097D35E6743 /* PJInputInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5F1BFE4FCC4E40F12975BB721B6DD /* PJInputInfo.m */; };
-		230BF75A88BECFF0A6F9618A7C3BB600 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A6291BE88844B0B0CA98ED50054F50F /* Foundation.framework */; };
+		1E31DAE8A0F91EEE8C68E87806E39360 /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = A54628ED5468A40A51A97D44E00FD1F5 /* NSString+Utils.m */; };
+		1F766A38B752D6E18303637C9E03239E /* PJURLProtocolRunLoop.h in Headers */ = {isa = PBXBuildFile; fileRef = 632E6600E46D55CD9F80FC258964BD9D /* PJURLProtocolRunLoop.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25A94973059806F67A4A3D96B9D410A7 /* PJResponseInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F279204EE7EEF1574805CF49F0AC4675 /* PJResponseInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		28FFFC8A32D11DDB40CF7BFE98FB63A1 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = CD04298B6C34FC190D74805E2B60A7EA /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		2922C954DCA50DB1C087E9E9C9440393 /* CocoaAsyncSocket-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B21232FCEA7AA8D2823535AA600D047 /* CocoaAsyncSocket-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		29A240236CE3808685DAF268053C2339 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A6291BE88844B0B0CA98ED50054F50F /* Foundation.framework */; };
-		2BDFF2E8CA980A634E48E4128ED07BC9 /* PJLinkCocoa-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5579042C5CE5312E6325EC12ABF54897 /* PJLinkCocoa-dummy.m */; };
-		2E554FCF1D79F33E61408159BCA146D2 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA6BEAF94C0765C5D0C41C1F9A1E1BA /* CoreServices.framework */; };
+		2E76B2DE2006CBC1675050ECCF70A111 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED477B8BE3173B4371FED84A26789F59 /* Security.framework */; };
 		315259C234FA2CBD285041669E7F5C86 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 52227F8A1F4CD1F3AB2FB633F0229BE0 /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		31A7E6A660B3AB47C3019411506FCF96 /* PJDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 019387F1AB7E5208F05C192187429D59 /* PJDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		368991A80729A642FCAAAAB345D4FAD4 /* AFPJLinkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD47CDB930C9F38E50D4207144E6DBC /* AFPJLinkClient.m */; };
+		3F298E2B8F6D88E48632F959D55EDF27 /* PJRequestInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 09C8F66B40EB55807B712EB24CDCD0D4 /* PJRequestInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		409E234A27D84130805C61155718DA95 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A6291BE88844B0B0CA98ED50054F50F /* Foundation.framework */; };
 		411EE6BA92B228BF3497175C14FC7A90 /* GCDAsyncUdpSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D984ED1E662C82C15BF8C4E7AB17CA2 /* GCDAsyncUdpSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		488EB33604F3A82E9A3E910724D1961B /* PJRequestInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2318C4653B4D11F295467A3871B34142 /* PJRequestInfo.m */; };
+		485E785F378F5C8B052DB5F45B00ECEE /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86EF2CBE7B85430CDBFE17A0E83282C3 /* CocoaAsyncSocket.framework */; };
 		49579BAEE33E5829E6569F947DB1674D /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 234303168A877A14360A24EC786CC697 /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		4EC23B3BD39B5E236039AF5BFA9C9AB3 /* PJLampStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 02F458E448236E837EFDAC5216A80BBA /* PJLampStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		501119DC0CF2877F95F7B9D75CA39F90 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED477B8BE3173B4371FED84A26789F59 /* Security.framework */; };
 		538A09F4A71A4E835C8CAD156EE7EFB4 /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = C1B3619F09AFEB960EBAE0FE48C94FE0 /* UIImageView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		54E0EA106EA4C52C394435B2E50906C5 /* Pods-PJLinkCocoaExample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE973D0555CAD294CE73025DF5BAADA /* Pods-PJLinkCocoaExample-dummy.m */; };
+		59B8A14CB37888D5F13E63F9929720D3 /* NSURL+Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 30294587F8D921176EBE225927455415 /* NSURL+Utils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5A4C96ED40C7C8AE4E3C5455EB4F45D5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA912F23CF3C594985EA2691A0E00620 /* CoreGraphics.framework */; };
-		5AC0363588CD7424C094B522C285B20B /* PJResponseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F37A543C1E3E1CB004CC2B56196EF3FB /* PJResponseInfo.m */; };
-		5DD1571E07FF4839AECF9869F56A8F8D /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = A54628ED5468A40A51A97D44E00FD1F5 /* NSString+Utils.m */; };
-		5E0E62D0E6FA29CB1D81FA9423A69161 /* PJProjector.m in Sources */ = {isa = PBXBuildFile; fileRef = F53403CEADFAC53C66079119312F5386 /* PJProjector.m */; };
 		603182C0787D74C7F7694E4B18AE1EA8 /* AFImageRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D796A1ABA8B6E2CCDED7B34976C71C5 /* AFImageRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		68236B23AAFA2CA06141184F92807103 /* AFPJLinkRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4E8AF7BAB37FA177F4675136BE70B7 /* AFPJLinkRequestOperation.m */; };
+		6CBF5ADB3ABEF1D41FD9EF3FC2BF2219 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 799E62818BB14BFD5FAE0AD0EED3B86E /* MobileCoreServices.framework */; };
 		6FD58AB8FBAA5D0D35A611478D29C22E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 257DB8B339520087BFCC6B120E76B72A /* SystemConfiguration.framework */; };
 		6FFB23DD5E8DD756D3A4AB53EEE4BA8E /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 71CA232649AB61E5E3B7B75C0F4F65BC /* GCDAsyncUdpSocket.m */; };
-		7A3F181C4A94E9D3B3C8E52D08025FA3 /* PJProjector.h in Headers */ = {isa = PBXBuildFile; fileRef = 38877107BBF995DF441077DB4B3EF33A /* PJProjector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7A9D3ABF183E5AC3A11E1FFF8E76F556 /* AFPropertyListRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F4AB807F2E85851506ED2F4F83116D /* AFPropertyListRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7AB64DF399DE4989AF0CCE3C64859D7E /* PJInputInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F65504854A365D9228177669DF6B390 /* PJInputInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7ECBAE47A93C820D734066E6D7C802F5 /* AFXMLRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 42575726E012BC988C75C22D720E27E8 /* AFXMLRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		83258F8820728ABE0FF733BA911E47E0 /* PJRequestInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 09C8F66B40EB55807B712EB24CDCD0D4 /* PJRequestInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		83587102552D9C86D52F940E51E95818 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 257DB8B339520087BFCC6B120E76B72A /* SystemConfiguration.framework */; };
+		858439588C510D0C57E4DA9251E0C0FD /* PJRequestInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2318C4653B4D11F295467A3871B34142 /* PJRequestInfo.m */; };
+		88DBC613A74DA018B92FD83968842FE6 /* NSString+Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = BDF669D6FE8B3D75BD3FF76176C4D1C4 /* NSString+Utils.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C17A69390063C1F0F005589DDEB6302 /* Pods-PJLinkCocoaExample-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 63DE053201B37DE012C5BBE089E2E1D1 /* Pods-PJLinkCocoaExample-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		908D0C0514E937CB00776B5EB7CF4216 /* NSURL+Utils.h in Headers */ = {isa = PBXBuildFile; fileRef = 30294587F8D921176EBE225927455415 /* NSURL+Utils.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FF70E0F949D20A2885964D4CDC4B47D /* PJResponseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F37A543C1E3E1CB004CC2B56196EF3FB /* PJResponseInfo.m */; };
+		92014B82F8376F062A1CF5436BF3CEE8 /* PJProjector.m in Sources */ = {isa = PBXBuildFile; fileRef = F53403CEADFAC53C66079119312F5386 /* PJProjector.m */; };
 		9284CD7A3B787C9F94C745659ABEFB3D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 799E62818BB14BFD5FAE0AD0EED3B86E /* MobileCoreServices.framework */; };
+		97D839307E089B212CBB93ABE1278BBC /* AFPJLinkRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = F023A4156743296EFB9E4BA118FD96E6 /* AFPJLinkRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		97E9A1EC90D6890DB0DE609D4943C04F /* PJLampStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = E17E475A091705C1AEF711E0D48C7D34 /* PJLampStatus.m */; };
 		9BD3D5468A5BBC6E72E8E7C6B86F0B09 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A6291BE88844B0B0CA98ED50054F50F /* Foundation.framework */; };
-		9FA1CAC855B7D5CC1486C3C549D8F52E /* PJURLProtocolRunLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = A58A1A94E842BC94F244BD47F3891A09 /* PJURLProtocolRunLoop.m */; };
 		A1903195C0B2F94A2E7A4BE130A570C6 /* AFJSONRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 15E881BFB20DAA8BA1D1534D543DD2E0 /* AFJSONRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A39B5911AC0C29EDAF591C9D7201B602 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D45C88F3E2A9AF71F3BED03440D38A3A /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		A5374AA4E4C0F21183886FA87E93B49A /* PJLinkCocoa-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 11045862181C4C02B5F6EF1C34EDF293 /* PJLinkCocoa-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A79CC0E31D7E422140529AA65F32E4C7 /* AFURLConnectionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 264C99810DF028327977E631B06C4FDB /* AFURLConnectionOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AE0E4ED763054F4A977C52676C180D6E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 257DB8B339520087BFCC6B120E76B72A /* SystemConfiguration.framework */; };
+		ABCB34E821A52279E1C92701A28F0D13 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA6BEAF94C0765C5D0C41C1F9A1E1BA /* CoreServices.framework */; };
 		B109B1325AB19AFC95048676827668BA /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E3CBBD5EA497A8F704D863E733971307 /* AFNetworkActivityIndicatorManager.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		B28D80EF8BF484CD6EAE3D7F2AF99D2F /* AFPJLinkRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = F023A4156743296EFB9E4BA118FD96E6 /* AFPJLinkRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B63453C6FC8C9681D16F81DEE31F5FFF /* AFPJLinkRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4E8AF7BAB37FA177F4675136BE70B7 /* AFPJLinkRequestOperation.m */; };
 		B7959276A948B2321DFF3BEB7B0A4558 /* AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 856AE99E5FEBE192BF66631F3D541260 /* AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BB366023AF3984B3A42855D2F3E24547 /* AFNetworking-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3A9CEE3D4FCD46427A2D9CCFE4AB74 /* AFNetworking-dummy.m */; };
 		BD144AD138283B3B48934DF2DB66A77E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A6291BE88844B0B0CA98ED50054F50F /* Foundation.framework */; };
-		C2B31324C214F842FD7E23B8319582B2 /* PJLampStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 02F458E448236E837EFDAC5216A80BBA /* PJLampStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C49C36FE2E1873A601BB73369ABC2EC6 /* PJDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 019387F1AB7E5208F05C192187429D59 /* PJDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C5E9994BA5C5B94EC99D25DBCEECC03C /* AFHTTPRequestOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = F99D0D5B9B0D6770A005F18668E02C94 /* AFHTTPRequestOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C66F7A95D74A45F506FFAB301F74BC3E /* AFNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A0ACC913260F6AD81085276B68EDEDE9 /* AFNetworkActivityIndicatorManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C8F15DAB25A6AC116EEB21457F695C6B /* PJLampStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = E17E475A091705C1AEF711E0D48C7D34 /* PJLampStatus.m */; };
 		CB177FBDEF7E1A68E90DF94D4D455B90 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0B08416FCBCA86D503C10C5B6A5684 /* AFJSONRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		CE366935E281DEC87529556FD80763F0 /* AFPJLinkClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD47CDB930C9F38E50D4207144E6DBC /* AFPJLinkClient.m */; };
-		D13AABE17E93BE7D4BC2D8DC05563614 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED477B8BE3173B4371FED84A26789F59 /* Security.framework */; };
 		DF77DA76BD5962EE7DD383126BBBBAC8 /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B341B7C71CF561571A24E30E37F3311 /* GCDAsyncSocket.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F057F70756D162626E520761A6BB3B24 /* AFPJLinkClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 650EE677D5A7FD7EBA45AC5F27141066 /* AFPJLinkClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F0D6E83EF59B69A7F6F97277CF21EE6F /* NSURL+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = F1978EC2D3C4DA8C14DB6B508B729DDD /* NSURL+Utils.m */; };
+		E54D8354205877CB1669B211CAE8DC5C /* PJProjector.h in Headers */ = {isa = PBXBuildFile; fileRef = 38877107BBF995DF441077DB4B3EF33A /* PJProjector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E5B314899B4D5EC6F3FC2E5C619900BE /* AFPJLinkClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 650EE677D5A7FD7EBA45AC5F27141066 /* AFPJLinkClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F112F9249A8D6A3B00EC2C8D0D954AA7 /* PJInputInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E5F1BFE4FCC4E40F12975BB721B6DD /* PJInputInfo.m */; };
 		F78657D67220E0055F82332162AA88CD /* AFNetworking-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E26D142A3A35946C7715C0438C155534 /* AFNetworking-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F87B89D9BB59EBD220DC45B7F3B125BD /* PJURLProtocolRunLoop.h in Headers */ = {isa = PBXBuildFile; fileRef = 632E6600E46D55CD9F80FC258964BD9D /* PJURLProtocolRunLoop.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F8D8D6E28AD764FFDC65583E627C6069 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A39327A4548CCB8FC25CA2AF1C1CD4C /* AFPropertyListRequestOperation.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		FBB70AF3F803450935EE98C837D98688 /* CocoaAsyncSocket-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B196357200CA673E8DF4899FC4877145 /* CocoaAsyncSocket-dummy.m */; };
-		FC126D63BEA11EE44EC0604F2EB5E522 /* PJResponseInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = F279204EE7EEF1574805CF49F0AC4675 /* PJResponseInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FCB97CE42E46676CD15C245F0A9CE4DC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED477B8BE3173B4371FED84A26789F59 /* Security.framework */; };
-		FF3900164122D654C9AAD222FFE03D89 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86EF2CBE7B85430CDBFE17A0E83282C3 /* CocoaAsyncSocket.framework */; };
+		FD9C70078DA8F677E704E76EF3A3474B /* NSURL+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = F1978EC2D3C4DA8C14DB6B508B729DDD /* NSURL+Utils.m */; };
+		FF8C289527A7AF68FBF2B6FBE4F1020F /* PJInputInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F65504854A365D9228177669DF6B390 /* PJInputInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		61D9CB3A30C1EA41EAF498F23C63C637 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6083682834ABE0AE7BD1CBF06CADD036;
+			remoteInfo = CocoaAsyncSocket;
+		};
 		75ED7ACDC832C302FD6983B849EFC79C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -84,14 +92,7 @@
 			remoteGlobalIDString = 6083682834ABE0AE7BD1CBF06CADD036;
 			remoteInfo = CocoaAsyncSocket;
 		};
-		802F828EB179B42B00E26B76F7EF0EF5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6083682834ABE0AE7BD1CBF06CADD036;
-			remoteInfo = CocoaAsyncSocket;
-		};
-		AC8ED947D57AC63D2E0703B848896222 /* PBXContainerItemProxy */ = {
+		A7700FFF42B8A4DD968A5CFF09910B6F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -227,19 +228,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7B63700CDA4E85025EB6506AFC6E925D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0FBCAA4484BE31D7DEB2FA2158DDB69B /* AFNetworking.framework in Frameworks */,
-				FF3900164122D654C9AAD222FFE03D89 /* CocoaAsyncSocket.framework in Frameworks */,
-				2E554FCF1D79F33E61408159BCA146D2 /* CoreServices.framework in Frameworks */,
-				230BF75A88BECFF0A6F9618A7C3BB600 /* Foundation.framework in Frameworks */,
-				D13AABE17E93BE7D4BC2D8DC05563614 /* Security.framework in Frameworks */,
-				AE0E4ED763054F4A977C52676C180D6E /* SystemConfiguration.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		95923F95245C7044C4826E04A5218E6B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -249,6 +237,20 @@
 				9284CD7A3B787C9F94C745659ABEFB3D /* MobileCoreServices.framework in Frameworks */,
 				FCB97CE42E46676CD15C245F0A9CE4DC /* Security.framework in Frameworks */,
 				6FD58AB8FBAA5D0D35A611478D29C22E /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFE1D583D49C7152ED30E73A66FAEE22 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C6ADF95F59E17ADB753C21A1662DDAE /* AFNetworking.framework in Frameworks */,
+				485E785F378F5C8B052DB5F45B00ECEE /* CocoaAsyncSocket.framework in Frameworks */,
+				ABCB34E821A52279E1C92701A28F0D13 /* CoreServices.framework in Frameworks */,
+				409E234A27D84130805C61155718DA95 /* Foundation.framework in Frameworks */,
+				6CBF5ADB3ABEF1D41FD9EF3FC2BF2219 /* MobileCoreServices.framework in Frameworks */,
+				2E76B2DE2006CBC1675050ECCF70A111 /* Security.framework in Frameworks */,
+				83587102552D9C86D52F940E51E95818 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +476,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		31EF6571C4C6DD59645D2D8D21467276 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5B314899B4D5EC6F3FC2E5C619900BE /* AFPJLinkClient.h in Headers */,
+				97D839307E089B212CBB93ABE1278BBC /* AFPJLinkRequestOperation.h in Headers */,
+				88DBC613A74DA018B92FD83968842FE6 /* NSString+Utils.h in Headers */,
+				59B8A14CB37888D5F13E63F9929720D3 /* NSURL+Utils.h in Headers */,
+				C49C36FE2E1873A601BB73369ABC2EC6 /* PJDefinitions.h in Headers */,
+				FF8C289527A7AF68FBF2B6FBE4F1020F /* PJInputInfo.h in Headers */,
+				4EC23B3BD39B5E236039AF5BFA9C9AB3 /* PJLampStatus.h in Headers */,
+				A5374AA4E4C0F21183886FA87E93B49A /* PJLinkCocoa-umbrella.h in Headers */,
+				E54D8354205877CB1669B211CAE8DC5C /* PJProjector.h in Headers */,
+				3F298E2B8F6D88E48632F959D55EDF27 /* PJRequestInfo.h in Headers */,
+				25A94973059806F67A4A3D96B9D410A7 /* PJResponseInfo.h in Headers */,
+				1F766A38B752D6E18303637C9E03239E /* PJURLProtocolRunLoop.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3714274952342530CC847FC67D1210DB /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -497,25 +518,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C17A69390063C1F0F005589DDEB6302 /* Pods-PJLinkCocoaExample-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A084E825D240F5059E486E6FD2465882 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F057F70756D162626E520761A6BB3B24 /* AFPJLinkClient.h in Headers */,
-				B28D80EF8BF484CD6EAE3D7F2AF99D2F /* AFPJLinkRequestOperation.h in Headers */,
-				0429716A3500122E34D870A0AE734665 /* NSString+Utils.h in Headers */,
-				908D0C0514E937CB00776B5EB7CF4216 /* NSURL+Utils.h in Headers */,
-				31A7E6A660B3AB47C3019411506FCF96 /* PJDefinitions.h in Headers */,
-				7AB64DF399DE4989AF0CCE3C64859D7E /* PJInputInfo.h in Headers */,
-				C2B31324C214F842FD7E23B8319582B2 /* PJLampStatus.h in Headers */,
-				115F0C18F4D523B168BB4B129D8D802E /* PJLinkCocoa-umbrella.h in Headers */,
-				7A3F181C4A94E9D3B3C8E52D08025FA3 /* PJProjector.h in Headers */,
-				83258F8820728ABE0FF733BA911E47E0 /* PJRequestInfo.h in Headers */,
-				FC126D63BEA11EE44EC0604F2EB5E522 /* PJResponseInfo.h in Headers */,
-				F87B89D9BB59EBD220DC45B7F3B125BD /* PJURLProtocolRunLoop.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,18 +572,18 @@
 		};
 		DB676497E02915C36F7CDBF8D90A492F /* PJLinkCocoa */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D6EBB4F2AC6937F3449607CBEA142BBD /* Build configuration list for PBXNativeTarget "PJLinkCocoa" */;
+			buildConfigurationList = 81E889FA7CC884B4EE2FA95D7143D191 /* Build configuration list for PBXNativeTarget "PJLinkCocoa" */;
 			buildPhases = (
-				A084E825D240F5059E486E6FD2465882 /* Headers */,
-				5271994F59D775EC32FB1E290BC80A39 /* Sources */,
-				7B63700CDA4E85025EB6506AFC6E925D /* Frameworks */,
-				99FD3BA99F7D33BED3D09124BBAB60F3 /* Resources */,
+				31EF6571C4C6DD59645D2D8D21467276 /* Headers */,
+				79249345F0B4E8FC8AAFE2E72A6877C9 /* Sources */,
+				FFE1D583D49C7152ED30E73A66FAEE22 /* Frameworks */,
+				CA38B04BFF0A0B1E317113C9393251A0 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				DD9A714341558095B8EBC79189B68E96 /* PBXTargetDependency */,
-				52860AA97CFD28867A586AFA0CA45B90 /* PBXTargetDependency */,
+				B1DEC1FF54FD60785A340FF2293F556D /* PBXTargetDependency */,
+				B565865219336D73916E21B67400EB1D /* PBXTargetDependency */,
 			);
 			name = PJLinkCocoa;
 			productName = PJLinkCocoa;
@@ -647,14 +649,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		99FD3BA99F7D33BED3D09124BBAB60F3 /* Resources */ = {
+		B7B5EDC45A81FF70431CFBFB2ABDFFEB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B7B5EDC45A81FF70431CFBFB2ABDFFEB /* Resources */ = {
+		CA38B04BFF0A0B1E317113C9393251A0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -681,21 +683,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5271994F59D775EC32FB1E290BC80A39 /* Sources */ = {
+		79249345F0B4E8FC8AAFE2E72A6877C9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE366935E281DEC87529556FD80763F0 /* AFPJLinkClient.m in Sources */,
-				68236B23AAFA2CA06141184F92807103 /* AFPJLinkRequestOperation.m in Sources */,
-				5DD1571E07FF4839AECF9869F56A8F8D /* NSString+Utils.m in Sources */,
-				F0D6E83EF59B69A7F6F97277CF21EE6F /* NSURL+Utils.m in Sources */,
-				201CF0ADD89C0FF791859097D35E6743 /* PJInputInfo.m in Sources */,
-				C8F15DAB25A6AC116EEB21457F695C6B /* PJLampStatus.m in Sources */,
-				2BDFF2E8CA980A634E48E4128ED07BC9 /* PJLinkCocoa-dummy.m in Sources */,
-				5E0E62D0E6FA29CB1D81FA9423A69161 /* PJProjector.m in Sources */,
-				488EB33604F3A82E9A3E910724D1961B /* PJRequestInfo.m in Sources */,
-				5AC0363588CD7424C094B522C285B20B /* PJResponseInfo.m in Sources */,
-				9FA1CAC855B7D5CC1486C3C549D8F52E /* PJURLProtocolRunLoop.m in Sources */,
+				368991A80729A642FCAAAAB345D4FAD4 /* AFPJLinkClient.m in Sources */,
+				B63453C6FC8C9681D16F81DEE31F5FFF /* AFPJLinkRequestOperation.m in Sources */,
+				1E31DAE8A0F91EEE8C68E87806E39360 /* NSString+Utils.m in Sources */,
+				FD9C70078DA8F677E704E76EF3A3474B /* NSURL+Utils.m in Sources */,
+				F112F9249A8D6A3B00EC2C8D0D954AA7 /* PJInputInfo.m in Sources */,
+				97E9A1EC90D6890DB0DE609D4943C04F /* PJLampStatus.m in Sources */,
+				06796430A36B3C98EB25B396941120F6 /* PJLinkCocoa-dummy.m in Sources */,
+				92014B82F8376F062A1CF5436BF3CEE8 /* PJProjector.m in Sources */,
+				858439588C510D0C57E4DA9251E0C0FD /* PJRequestInfo.m in Sources */,
+				8FF70E0F949D20A2885964D4CDC4B47D /* PJResponseInfo.m in Sources */,
+				178F5C4758CB949ADA6B1B74EF8BF4A4 /* PJURLProtocolRunLoop.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -739,17 +741,17 @@
 			target = 6083682834ABE0AE7BD1CBF06CADD036 /* CocoaAsyncSocket */;
 			targetProxy = 75ED7ACDC832C302FD6983B849EFC79C /* PBXContainerItemProxy */;
 		};
-		52860AA97CFD28867A586AFA0CA45B90 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CocoaAsyncSocket;
-			target = 6083682834ABE0AE7BD1CBF06CADD036 /* CocoaAsyncSocket */;
-			targetProxy = 802F828EB179B42B00E26B76F7EF0EF5 /* PBXContainerItemProxy */;
-		};
-		DD9A714341558095B8EBC79189B68E96 /* PBXTargetDependency */ = {
+		B1DEC1FF54FD60785A340FF2293F556D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = AFNetworking;
 			target = 0130B3724283586C0E9D2A112D4F2AA1 /* AFNetworking */;
-			targetProxy = AC8ED947D57AC63D2E0703B848896222 /* PBXContainerItemProxy */;
+			targetProxy = A7700FFF42B8A4DD968A5CFF09910B6F /* PBXContainerItemProxy */;
+		};
+		B565865219336D73916E21B67400EB1D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CocoaAsyncSocket;
+			target = 6083682834ABE0AE7BD1CBF06CADD036 /* CocoaAsyncSocket */;
+			targetProxy = 61D9CB3A30C1EA41EAF498F23C63C637 /* PBXContainerItemProxy */;
 		};
 		FEAC8ED4AD45BA77E15AAC08DE8F6996 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -925,9 +927,9 @@
 			};
 			name = Release;
 		};
-		83F22A17A1F451627756E338047A61FA /* Debug */ = {
+		65892566A32A04693792714F309843D3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E359D0EB1ED298E353B622E6E4DCDF47 /* PJLinkCocoa.debug.xcconfig */;
+			baseConfigurationReference = AF458807ED9B114EAF1568B8CBE6BA10 /* PJLinkCocoa.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -952,10 +954,11 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		92A3E9AC052A7345115439021B218E3B /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1016,39 +1019,6 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Release;
-		};
-		98670B4680B623A0C3517E8E8234573F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AF458807ED9B114EAF1568B8CBE6BA10 /* PJLinkCocoa.release.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/PJLinkCocoa/PJLinkCocoa-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/PJLinkCocoa/PJLinkCocoa-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/PJLinkCocoa/PJLinkCocoa.modulemap";
-				PRODUCT_MODULE_NAME = PJLinkCocoa;
-				PRODUCT_NAME = PJLinkCocoa;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -1148,6 +1118,38 @@
 			};
 			name = Debug;
 		};
+		FE5F8A2C5A5D81379399B2629295E1B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E359D0EB1ED298E353B622E6E4DCDF47 /* PJLinkCocoa.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/PJLinkCocoa/PJLinkCocoa-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PJLinkCocoa/PJLinkCocoa-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/PJLinkCocoa/PJLinkCocoa.modulemap";
+				PRODUCT_MODULE_NAME = PJLinkCocoa;
+				PRODUCT_NAME = PJLinkCocoa;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1187,11 +1189,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D6EBB4F2AC6937F3449607CBEA142BBD /* Build configuration list for PBXNativeTarget "PJLinkCocoa" */ = {
+		81E889FA7CC884B4EE2FA95D7143D191 /* Build configuration list for PBXNativeTarget "PJLinkCocoa" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				83F22A17A1F451627756E338047A61FA /* Debug */,
-				98670B4680B623A0C3517E8E8234573F /* Release */,
+				FE5F8A2C5A5D81379399B2629295E1B1 /* Debug */,
+				65892566A32A04693792714F309843D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

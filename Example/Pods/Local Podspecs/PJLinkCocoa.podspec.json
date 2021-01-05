@@ -19,7 +19,8 @@
   "frameworks": [
     "CoreServices",
     "SystemConfiguration",
-    "Security"
+    "Security",
+    "MobileCoreServices"
   ],
   "dependencies": {
     "AFNetworking": [
